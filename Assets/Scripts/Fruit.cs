@@ -10,7 +10,8 @@ public class Fruit : MonoBehaviour
     {
         Banana,
         Apple,
-        Pear
+        Pear,
+        NotFruit
     };
 
     public Fruits fruit;
