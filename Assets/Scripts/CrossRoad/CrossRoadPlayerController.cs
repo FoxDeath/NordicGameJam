@@ -25,6 +25,7 @@ public class CrossRoadPlayerController : MonoBehaviour
             if (transform.position == endPos)
             {
                 endPos = new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z);
+                transform.rotation = Quaternion.Euler(0f, -90f, 0f);
             }
         };
 
@@ -35,6 +36,7 @@ public class CrossRoadPlayerController : MonoBehaviour
             if (transform.position == endPos)
             {
                 endPos = new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z);
+                transform.rotation = Quaternion.Euler(0f, 90f, 0f);
             }
         };
 
@@ -45,6 +47,7 @@ public class CrossRoadPlayerController : MonoBehaviour
             if (transform.position == endPos)
             {
                 endPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1f);
+                transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             }
         };
 
@@ -55,6 +58,7 @@ public class CrossRoadPlayerController : MonoBehaviour
             if (transform.position == endPos)
             {
                 endPos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1f);
+                transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             }
         };
 
@@ -76,11 +80,6 @@ public class CrossRoadPlayerController : MonoBehaviour
         {
             perc = 1f;
         }
-
-        if (Mathf.Round(perc) == 1f)
-        {
-            anim.SetBool("Jumping", false);
-        }
     }
 
     private void Move()
@@ -88,7 +87,6 @@ public class CrossRoadPlayerController : MonoBehaviour
         if (perc == 1f)
         {
             currentLerpTime = 0f;
-            anim.SetBool("Jumping", true);
         }
     }
 }
