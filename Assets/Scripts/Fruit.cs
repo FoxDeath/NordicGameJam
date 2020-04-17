@@ -5,16 +5,19 @@ using UnityEngine;
 public class Fruit : MonoBehaviour
 {
     private bool onLine = false;
-    // Start is called before the first frame update
+    
+    public enum Fruits
+    {
+        Banana,
+        Apple,
+        Pear
+    };
+
+    public Fruits fruit;
+
     void Start()
     {
         StartCoroutine(Destroy());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     IEnumerator Destroy()
@@ -31,13 +34,15 @@ public class Fruit : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
+    private void OnCollisionEnter2D(Collision2D other) 
+    {
         if(other.gameObject.CompareTag("Line"))
         {
             onLine = true;
         }
     }
-    private void OnCollisionExit2D(Collision2D other) {
+    private void OnCollisionExit2D(Collision2D other) 
+    {
         if(other.gameObject.CompareTag("Line"))
         {
             onLine = false;

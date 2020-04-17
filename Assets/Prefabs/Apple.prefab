@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 3993697939671301193}
   - component: {fileID: 7861619107854451028}
   m_Layer: 0
-  m_Name: Fruit
-  m_TagString: Untagged
+  m_Name: Apple
+  m_TagString: Fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f236e49c2cb9f2d46990009e51bb16a1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,7 +112,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 3993697939671301192}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9a5db1182f3993e4881739c979c48d15, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -131,3 +131,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d58621c72ed8f74e8b8de94adcaff2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fruit: 1
