@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
+    [SerializeField] float speed = 2f;
     private Transform player;
     private NavMeshAgent agent;
 
