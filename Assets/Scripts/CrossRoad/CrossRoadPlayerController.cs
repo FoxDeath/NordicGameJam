@@ -10,7 +10,6 @@ public class CrossRoadPlayerController : MonoBehaviour
     private Vector3 startPos;
     private Vector3 endPos;
 
-    private float lerpTime;
     private float currentLerpTime;
     private float perc = 1f;
 
@@ -70,7 +69,7 @@ public class CrossRoadPlayerController : MonoBehaviour
     {
         startPos = transform.position;
         currentLerpTime += Time.deltaTime * 5f;
-        perc = currentLerpTime / lerpTime;
+        perc = currentLerpTime;
         transform.position = Vector3.Lerp(startPos, endPos, perc);
 
         if (perc > 0.8f)
@@ -88,7 +87,6 @@ public class CrossRoadPlayerController : MonoBehaviour
     {
         if (perc == 1f)
         {
-            lerpTime = 1f;
             currentLerpTime = 0f;
             anim.SetBool("Jumping", true);
         }
