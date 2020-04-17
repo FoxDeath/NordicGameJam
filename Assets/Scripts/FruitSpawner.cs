@@ -5,6 +5,7 @@ using UnityEngine;
 public class FruitSpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] fruit;
+    [SerializeField] GameObject[] notFruit;
     [SerializeField, Range(0f, 100f)] float spawnRangeX;
     [SerializeField, Range(0f, 100f)] float spawnRangeY;
 
@@ -24,7 +25,14 @@ public class FruitSpawner : MonoBehaviour
             0f
         );
 
-        GameObject tempFruit = Instantiate(fruit[Random.Range(0, fruit.Length)], spawnPosition, Quaternion.identity);
+        if(Random.Range(1, 100) > 25)
+        {
+            GameObject tempFruit = Instantiate(fruit[Random.Range(0, fruit.Length)], spawnPosition, Random.rotation);
+        }
+        else
+        {
+            GameObject tempFruit = Instantiate(notFruit[Random.Range(0, notFruit.Length)], spawnPosition, Random.rotation);
+        }
 
         yield return new WaitForSeconds(Random.Range(0.5f, 2f));
         yield return StartCoroutine(SpawnFruit());

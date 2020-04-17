@@ -6,9 +6,17 @@ public class Mixer : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Recipe recipe = FindObjectOfType<Recipe>();
+        
         if(other.CompareTag("Fruit"))
         {
-            FindObjectOfType<Recipe>().Substract(other.gameObject);
+            recipe.Substract(other.gameObject);
+            Destroy(other.gameObject);
+        }
+
+        if(other.CompareTag("NotFruit"))
+        {
+            recipe.EndGame();
             Destroy(other.gameObject);
         }
     }

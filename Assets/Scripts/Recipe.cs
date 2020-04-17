@@ -62,7 +62,7 @@ public class Recipe : MonoBehaviour
         //to do: Victory screen
     }
 
-    private void EndGame()
+    public void EndGame()
     {
         return;
         //to do: Lose screen
