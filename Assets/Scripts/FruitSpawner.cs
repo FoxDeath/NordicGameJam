@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class FruitSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject fruit;
+    [SerializeField] GameObject[] fruit;
+    [SerializeField, Range(0f, 100f)] float spawnRangeX;
+    [SerializeField, Range(0f, 100f)] float spawnRangeY;
+
 
     // Start is called before the first frame update
     void Start()
@@ -16,12 +19,12 @@ public class FruitSpawner : MonoBehaviour
     {
         Vector3 spawnPosition = new Vector3
         (
-            Random.Range(-10f, 10f),
-            Random.Range(6f, 8f),
+            Random.Range(-spawnRangeX, spawnRangeX),
+            Random.Range(spawnRangeY - 2f, spawnRangeY),
             0f
         );
 
-        GameObject tempFruit = Instantiate(fruit, spawnPosition, Quaternion.identity);
+        GameObject tempFruit = Instantiate(fruit[Random.Range(0, fruit.Length)], spawnPosition, Quaternion.identity);
 
         yield return new WaitForSeconds(Random.Range(0.5f, 2f));
         yield return StartCoroutine(SpawnFruit());

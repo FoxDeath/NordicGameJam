@@ -18,15 +18,12 @@ public class DrawLine : MonoBehaviour
 
     private bool mouseClicked = false;
 
-
-    // Start is called before the first frame update
     void Awake()
     {
         playerInput = new Player();
         playerInput.Enable();
     }
 
-    // Update is called once per frame
     void Update()
     {
         playerInput.CatchFruit.MousePossition.performed += context => 
