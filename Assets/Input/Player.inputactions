@@ -1,0 +1,52 @@
+{
+    "name": "CatchFruitInputs",
+    "maps": [
+        {
+            "name": "CatchFruit",
+            "id": "24e588d1-f2ff-4976-8530-e49b897a7ae8",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "edcd1adb-9225-4e45-9b62-2d24dcefdbc3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MousePossition",
+                    "type": "Value",
+                    "id": "add79f62-73df-4cc1-9f7a-9d25aee81651",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2c1ed903-a881-4519-9dd1-1c1fcf1dc8db",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d149f235-9c90-4fec-b1f8-0127dff24bb9",
+                    "path": "<Mouse>/position/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePossition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
