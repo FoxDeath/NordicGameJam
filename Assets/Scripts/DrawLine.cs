@@ -5,16 +5,16 @@ using UnityEngine.InputSystem;
 
 public class DrawLine : MonoBehaviour
 {
-    public GameObject linePrefab;
-    public GameObject currentLine;
+    [SerializeField] GameObject linePrefab;
+    private GameObject currentLine;
     
-    public LineRenderer lineRenderer;
-    public EdgeCollider2D edgeCollider;
+    private LineRenderer lineRenderer;
+    private EdgeCollider2D edgeCollider;
 
     public List<Vector2> mousePossition;
-    public Vector2 currentMousePossition;
+    private Vector2 currentMousePossition;
 
-    public Player playerInput;
+    private Player playerInput;
 
     private bool mouseClicked = false;
 
