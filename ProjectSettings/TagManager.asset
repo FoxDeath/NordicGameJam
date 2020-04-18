@@ -14,6 +14,7 @@ TagManager:
   - Goal
   - Enemy
   - Point
+  - Restriction
   layers:
   - Default
   - TransparentFX

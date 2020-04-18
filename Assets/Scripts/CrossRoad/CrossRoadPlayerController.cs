@@ -180,6 +180,11 @@ public class CrossRoadPlayerController : MonoBehaviour
             Victory();
             Destroy(transform.GetChild(0).gameObject);
         }
+
+        if (other.CompareTag("Restriction"))
+        {
+            endPos = startPos;
+        }
     }
 
     private void Victory()
