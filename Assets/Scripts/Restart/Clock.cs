@@ -24,7 +24,7 @@ public class Clock : MonoBehaviour
 
         if(transform.position.z > -0.5f)
         {
-            transform.position -= new Vector3(0f, 0f, 33f * Time.deltaTime);
+            transform.position -= new Vector3(0f, 0f, 34f * Time.deltaTime);
         }
         else
         {
