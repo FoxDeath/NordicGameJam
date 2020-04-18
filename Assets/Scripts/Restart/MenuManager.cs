@@ -258,7 +258,7 @@ public class MenuManager : MonoBehaviour
                 break;
 
             case "CrossRoad":
-                
+                text = "Cross the road you bastard";
                 break;
 
             case "OfficePacMan":
@@ -285,7 +285,7 @@ public class MenuManager : MonoBehaviour
                 break;
 
             case "CrossRoad":
-                
+                GameObject.Find("StartScreen").SetActive(false);
                 break;
 
             case "OfficePacMan":

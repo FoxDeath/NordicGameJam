@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CatchFruit.unity
     guid: ce15ce0c307612845bf97ce63095cded
+  - enabled: 1
+    path: Assets/Scenes/CrossRoad.unity
+    guid: 819d362e1808af84d8e0bc73dea25a49
   m_configObjects: {}
