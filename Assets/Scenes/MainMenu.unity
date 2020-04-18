@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: 
-  sceneToLoad: 6
+  sceneToLoad: 1
 --- !u!1 &660469118
 GameObject:
   m_ObjectHideFlags: 0

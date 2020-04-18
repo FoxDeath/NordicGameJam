@@ -14,19 +14,19 @@ public class DrawLine : MonoBehaviour
     public List<Vector2> mousePossition;
     private Vector2 currentMousePossition;
 
-    private Player playerInput;
+    private PlayerInput playerInput;
 
     private bool mouseClicked = false;
 
     void Awake()
     {
-        playerInput = new Player();
+        playerInput = new PlayerInput();
         playerInput.Enable();
     }
 
     void Update()
     {
-        playerInput.CatchFruit.MousePossition.performed += context => 
+        playerInput.CatchFruit.MousePosition.performed += context => 
         {
             currentMousePossition = context.ReadValue<Vector2>();
         };

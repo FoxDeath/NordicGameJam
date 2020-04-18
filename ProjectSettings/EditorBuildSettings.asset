@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: b416aa88dbd513c4eb5b6b81e08ff147
   - enabled: 1
-    path: Assets/Scenes/RestartScene.unity
-    guid: 8635e7683f26d61418119981bf246ca7
-  - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: 33588f5a5a21f2447a1db17be07e4e22
+  - enabled: 1
+    path: Assets/Scenes/CatchFruit.unity
+    guid: ce15ce0c307612845bf97ce63095cded
   m_configObjects: {}
