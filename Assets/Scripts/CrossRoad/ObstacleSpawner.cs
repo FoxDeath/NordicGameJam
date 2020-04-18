@@ -5,32 +5,60 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] GameObject spawnable;
+    private GameObject carContainer;
 
     private Vector3 spawnPoint;
 
     [SerializeField] float spawnOffset = 5f;
-    //hmaybe have a float for the minimum spawn rate???
+    [SerializeField] float speed = 3f;
+    private float xScale;
+
+    [SerializeField] int minDist = 0;
+    [SerializeField] int maxDist = 5;
 
     void Start()
     {
-        if (Random.Range(0, 1) == 0)
+        carContainer = transform.parent.Find("Container").gameObject;
+        xScale = spawnable.transform.Find("Mesh").localScale.x + 0.3f;
+
+        if (Random.Range(0, 2) == 0)
         {
-            spawnPoint = new Vector3(transform.position.x - 22f + spawnOffset, transform.position.y, transform.position.z);
+            spawnPoint = new Vector3(transform.position.x - 22f - spawnOffset, transform.position.y + 1f, transform.position.z);
         }
         else
         {
-            spawnPoint = new Vector3(transform.position.x + 22f + spawnOffset, transform.position.y, transform.position.z);
+            spawnPoint = new Vector3(transform.position.x + 22f + spawnOffset, transform.position.y + 1f, transform.position.z);
         }
+
+        StartCoroutine(SpawnBehaviour());
     }
 
-    //set the spawn speed according to the speed and length of the spawnable so
-    //that if you spawn 2 cars immediately after each other they should be right
-    //after each other and not stuck together
+    IEnumerator SpawnBehaviour()
+    {
+        while (true)
+        {
+            Vector3 direction = new Vector3();
+            Quaternion rotation = new Quaternion();
 
-    //either spawn the car right after the other one or leave a set amount of space after the other one
+            if (spawnPoint.x < 0f)
+            {
+                direction = Vector3.right;
+                rotation = Quaternion.Euler(0f, 0f, 0f);
+            }
+            else
+            {
+                direction = Vector3.left;
+                rotation = Quaternion.Euler(0f, 180f, 0f);
+            }
 
-    //the spawn rate shouldnt be in time but in the number of possible free units between the cars
+            ObstacleController oc = Instantiate(spawnable, spawnPoint, rotation, carContainer.transform).GetComponent<ObstacleController>();
 
-    //from the speed of the car get how fast it travels one unit and multiply that with the number of free
-    //slots in between that the random generator puts out
+            oc.SetDirection(direction);
+            oc.SetSpeed(speed);
+
+            float cooldown = 1 / speed * xScale * Random.Range(minDist, maxDist);
+
+            yield return new WaitForSeconds(cooldown);
+        }
+    }
 }
