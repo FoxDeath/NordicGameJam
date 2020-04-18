@@ -8,10 +8,16 @@ public class Recipe : MonoBehaviour
     [SerializeField] TextMeshProUGUI bananaNumberText;
     [SerializeField] TextMeshProUGUI pearNumberText;
     [SerializeField] TextMeshProUGUI appleNumberText;
+
+    [SerializeField] GameObject tryAgainMenu;
+    [SerializeField] GameObject winMenu;
+
     
     private int bananaNumber;
     private int pearNumber;
     private int appleNumber;
+
+    private bool gameEnded = false;
 
     void Start()
     {
@@ -26,6 +32,11 @@ public class Recipe : MonoBehaviour
 
     void Update()
     {
+        if(gameEnded)
+        {
+            return;
+        }
+
         bananaNumberText.text = bananaNumber.ToString();
         pearNumberText.text = pearNumber.ToString();
         appleNumberText.text = appleNumber.ToString();
@@ -40,17 +51,17 @@ public class Recipe : MonoBehaviour
             Victory();
         }
 
-        if(bananaNumber < 1)
+        if(bananaNumber < 0)
         {
             EndGame();
         }
 
-        if(appleNumber < 1)
+        if(appleNumber < 0)
         {
             EndGame();
         }
 
-        if(pearNumber < 1)
+        if(pearNumber < 0)
         {
             EndGame();
         }
@@ -58,14 +69,20 @@ public class Recipe : MonoBehaviour
 
     private void Victory()
     {
-        return;
-        //to do: Victory screen
+        gameEnded = true;
+        winMenu.SetActive(true);
+        MenuManager endGameManager = FindObjectOfType<MenuManager>();
+        endGameManager.text = "You managed to do it somehow this time";
+        StartCoroutine(endGameManager.TypeSentence());
     }
 
     public void EndGame()
-    {
-        return;
-        //to do: Lose screen
+    {   
+        gameEnded = true;
+        tryAgainMenu.SetActive(true);
+        MenuManager endGameManager = FindObjectOfType<MenuManager>();
+        endGameManager.text = "Looks like you failed again you dimwit";
+        StartCoroutine(endGameManager.TypeSentence());
     }
 
     public void Substract(GameObject fruit)
