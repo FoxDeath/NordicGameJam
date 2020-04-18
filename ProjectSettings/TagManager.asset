@@ -8,6 +8,8 @@ TagManager:
   - Pavement
   - Obstacle
   - Tracks
+  - Enemy
+  - Point
   layers:
   - Default
   - TransparentFX
