@@ -899,7 +899,7 @@ MonoBehaviour:
   spawnable: {fileID: 2646806334909177175, guid: 5e77e212f5429cf41b8bbad969a28385,
     type: 3}
   spawnOffset: 5
-  speed: 7
+  speed: 5
   minDist: 0
   maxDist: 5
 --- !u!1 &5221511632100841900
@@ -1722,7 +1722,7 @@ MonoBehaviour:
   spawnable: {fileID: 2646806334909177175, guid: 5e77e212f5429cf41b8bbad969a28385,
     type: 3}
   spawnOffset: 5
-  speed: 7
+  speed: 5
   minDist: 0
   maxDist: 5
 --- !u!1 &5221511632780809399
