@@ -4,12 +4,12 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float speed = 3f;
 
-    private Player input;
+    private Input input;
     private Vector3 direction = Vector3.zero;
 
     void Awake()
     {
-        input = new Player();
+        input = new Input();
         input.Enable();
 
         input.Pacman.Up.performed += a =>
