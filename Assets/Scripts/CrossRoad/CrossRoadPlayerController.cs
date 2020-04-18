@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem.Interactions;
+using Cinemachine;
 
 public class CrossRoadPlayerController : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class CrossRoadPlayerController : MonoBehaviour
     private float currentScaleTime;
     private float perc = 1f;
     private float scalePerc;
+
+    [SerializeField] GameObject tryAgainMenu;
+    [SerializeField] GameObject winMenu;
+
+    private bool gameEnded = false;
+    public bool gameStarted = false;
 
     void Awake()
     {
@@ -146,6 +153,11 @@ public class CrossRoadPlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(gameEnded || !gameStarted)
+        {
+            return;
+        }
+
          currentLerpTime += Time.deltaTime * lerpSpeed;
          perc = currentLerpTime;
          transform.position = Vector3.Lerp(startPos, endPos, ac.Evaluate(perc));
@@ -159,7 +171,39 @@ public class CrossRoadPlayerController : MonoBehaviour
     {
         if (other.CompareTag("Obstacle"))
         {
-            Destroy(gameObject);
+            EndGame();
+            Destroy(transform.GetChild(0).gameObject);
         }
+
+        if (other.CompareTag("FinalSidewalk"))
+        {
+            Victory();
+            Destroy(transform.GetChild(0).gameObject);
+        }
+    }
+
+    private void Victory()
+    {
+        gameEnded = true;
+        winMenu.SetActive(true);
+        MenuManager endGameManager = FindObjectOfType<MenuManager>();
+        FindObjectOfType<CameraFreze>().freze = true;
+        endGameManager.text = "You managed to do it somehow this time.";
+        StartCoroutine(endGameManager.TypeSentence());
+    }
+
+    public void EndGame()
+    {
+        if(gameEnded)
+        {
+            return;
+        }
+
+        gameEnded = true;
+        tryAgainMenu.SetActive(true);
+        MenuManager endGameManager = FindObjectOfType<MenuManager>();
+        FindObjectOfType<CameraFreze>().freze = true;
+        endGameManager.text = "Looks like you failed again you dimwit.";
+        StartCoroutine(endGameManager.TypeSentence());
     }
 }
