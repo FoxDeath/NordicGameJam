@@ -14,6 +14,7 @@ public class MenuManager : MonoBehaviour
     Image brightness;
     bool loading = false;
     bool starting = false;
+    bool canClickButton = true;
     public Loader.Scene sceneToLoad;
 
     public static MenuManager instance;
@@ -98,9 +99,17 @@ public class MenuManager : MonoBehaviour
 
         restartText.text = "";
 
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+
         foreach(char letter in text.ToCharArray())
         {
             restartText.text += letter;
+
+            if(!letter.Equals(' '))
+            {
+                audioManager.SetPitch("voice", Random.Range(0.8f, 1.2f));
+                audioManager.Play("voice");
+            }
 
             if(letter.Equals('.') || letter.Equals('?') || letter.Equals('!'))
             {
@@ -108,19 +117,25 @@ public class MenuManager : MonoBehaviour
             }
             else
             {
-                yield return new WaitForSeconds(0.03f);
-
+                yield return new WaitForSeconds(0.1f);
             }
         }
     }
 
     public void TryAgain()
     {
+        if(!canClickButton)
+        {
+            return;
+        }
+        
         StartCoroutine(TryAgainBehaviour());
     }
 
     IEnumerator TryAgainBehaviour()
     {
+        canClickButton = false;
+
         text = "You probably won't make it this time again.";
         yield return StartCoroutine(TypeSentence());
 
@@ -153,15 +168,24 @@ public class MenuManager : MonoBehaviour
                 loading = true;
                 break;
         }
+
+        canClickButton = true;
     }
 
     public void Continue()
     {
+        if(!canClickButton)
+        {
+            return;
+        }
+        
         StartCoroutine(ContinueBehaviour());
     }
 
     IEnumerator ContinueBehaviour()
     {
+        canClickButton = false;
+
         text = "Sure, go on. You will fail eventually.";
         yield return StartCoroutine(TypeSentence());
 
@@ -194,15 +218,24 @@ public class MenuManager : MonoBehaviour
                 loading = true;
                 break;
         }
+
+        canClickButton = true;
     }
 
     public void GiveUp()
     {
+        if(!canClickButton)
+        {
+            return;
+        }
+        
         StartCoroutine(GiveUpBehaviour());
     }
 
     IEnumerator GiveUpBehaviour()
     {
+        canClickButton = false;
+
         text = "That's right, give up.";
         yield return StartCoroutine(TypeSentence());
 
@@ -211,6 +244,8 @@ public class MenuManager : MonoBehaviour
         sceneToLoad = Loader.Scene.MainMenu;
         Clock.GoingForward = false;
         loading = true;
+
+        canClickButton = true;
     }
 
     public void StartMiniGame()
@@ -246,7 +281,7 @@ public class MenuManager : MonoBehaviour
             case "CatchFruit":
                 StartCoroutine(FindObjectOfType<FruitSpawner>().SpawnFruit());
                 GameObject.Find("StartScreen").SetActive(false);
-                GameObject.Find("Recipe").SetActive(true);
+                GameObject.Find("RecipeParent").transform.GetChild(0).gameObject.SetActive(true);
                 break;
 
             case "CrossRoad":
