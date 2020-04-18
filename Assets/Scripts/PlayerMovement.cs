@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //[SerializeField] float speed = 3f;
-    private float horizontal;
-    private float vertical;
+    [SerializeField] float speed = 3f;
 
     private Player input;
-    private Vector3 currPos;
+    private Vector3 direction = Vector3.zero;
 
     void Awake()
     {
@@ -18,37 +16,36 @@ public class PlayerMovement : MonoBehaviour
 
         input.Pacman.Up.performed += a =>
         {
-            transform.position += Vector3.forward;
+            direction = Vector3.forward;
             transform.rotation = Quaternion.Euler(0f, -90f, 0f);
         };
 
         input.Pacman.Down.performed += a =>
         {
-            transform.position += Vector3.forward * -1;
+            direction = Vector3.forward * -1;
             transform.rotation = Quaternion.Euler(0f, 90f, 0f);
         };
 
         input.Pacman.Left.performed += a =>
         {
-            transform.position += Vector3.left;
+            direction = Vector3.left;
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         };
         
         input.Pacman.Right.performed += a =>
         {
-            transform.position += Vector3.right;
+            direction = Vector3.right;
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         };
     }
 
-    void Start()
-    {
-        currPos = transform.position;
-    }
-
     void FixedUpdate()
     {
-        horizontal = currPos.x;
-        vertical = currPos.y;
+        Move();
+    }
+
+    void Move()
+    {
+        transform.position += direction * speed * Time.deltaTime;
     }
 }
