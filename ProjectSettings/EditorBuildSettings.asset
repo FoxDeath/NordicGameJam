@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CrossRoad.unity
     guid: 819d362e1808af84d8e0bc73dea25a49
+  - enabled: 1
+    path: Assets/Scenes/OfficePacman.unity
+    guid: 59f94b49562e6b14c950ffe34a384d91
   m_configObjects: {}

@@ -161,7 +161,7 @@ public class MenuManager : MonoBehaviour
                 loading = true;
                 break;
 
-            case "OfficePacMan":
+            case "OfficePacman":
                 sceneToLoad = Loader.Scene.OfficePacMan;
                 Clock.GoingForward = false;
                 loading = true;
@@ -211,7 +211,7 @@ public class MenuManager : MonoBehaviour
                 loading = true;
                 break;
 
-            case "OfficePacMan":
+            case "OfficePacman":
                 sceneToLoad = Loader.Scene.CarLabytinth;
                 Clock.GoingForward = true;
                 loading = true;
@@ -264,15 +264,15 @@ public class MenuManager : MonoBehaviour
         switch (sceneName)
         {
             case "CatchFruit":
-                text = "Are you ready for breakfast";
+                text = "Are you ready for breakfast!";
                 break;
 
             case "CrossRoad":
-                text = "Cross the road you bastard";
+                text = "Cross the road you bastard!";
                 break;
 
-            case "OfficePacMan":
-                
+            case "OfficePacman":
+                text = "Work! Work! Work!";
                 break;
 
             case "CarLabyrinth":
@@ -285,7 +285,7 @@ public class MenuManager : MonoBehaviour
 
     public void Ready()
     {
-        if(!canClickButton)
+        if(!canClickButton || writingText)
         {
             return;
         }
@@ -304,8 +304,10 @@ public class MenuManager : MonoBehaviour
                 FindObjectOfType<CrossRoadPlayerController>().gameStarted = true;
                 break;
 
-            case "OfficePacMan":
-                
+            case "OfficePacman":
+                GameObject.Find("StartScreen").SetActive(false);
+                PlayerMovement.gameStarted = true;
+                GameObject.Find("GameUI").transform.GetChild(0).gameObject.SetActive(true);
                 break;
 
             case "CarLabyrinth":
