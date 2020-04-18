@@ -15,7 +15,7 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         FaceTarget();
-        agent.destination = player.transform.position;
+        agent.SetDestination(player.position);
     }
 
     void FaceTarget()
@@ -25,11 +25,11 @@ public class EnemyMovement : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player")
         {
-            //Player dies or game restarts.
+            print("get fucked");
         }
     }
 }
