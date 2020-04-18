@@ -11,7 +11,7 @@ public class StartButton : MonoBehaviour
     {
         button = GetComponent<Button>();
         MenuManager manager = FindObjectOfType<MenuManager>();
-        manager.sceneToLoad = Loader.Scene.OfficePacMan;
+        manager.sceneToLoad = Loader.Scene.CatchFruit;
         button.onClick.AddListener(manager.StartGame);
     }
 }
