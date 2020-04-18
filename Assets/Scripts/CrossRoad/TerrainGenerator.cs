@@ -51,31 +51,6 @@ public class TerrainGenerator : MonoBehaviour
             {
                 Instantiate(lines, new Vector3(currentPosition.x, currentPosition.y, currentPosition.z - 1f), Quaternion.identity, transform);
             }
-
-            inARow++;
-
-            if (currentTerrain.CompareTag("Road") && inARow > 4)
-            {
-                SpawnTerrain();
-                print(1);
-                return;
-            }
-            else if (currentTerrain.CompareTag("Pavement") && inARow > 2)
-            {
-                SpawnTerrain();
-                print(1);
-                return;
-            }
-            else if (currentTerrain.CompareTag("Tracks") && inARow > 3)
-            {
-                SpawnTerrain();
-                print(1);
-                return;
-            }
-        }
-        else
-        {
-            inARow = 0;
         }
 
         GameObject ins = Instantiate(currentTerrain, currentPosition, Quaternion.identity, transform);

@@ -680,12 +680,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TerrainGenerator
       objectReference: {fileID: 0}
-    - target: {fileID: 2892687902856407991, guid: 4fe7a0ea31366ee4bbe5cf1b463a6896,
-        type: 3}
-      propertyPath: lines
-      value: 
-      objectReference: {fileID: 8045567541970867317, guid: 27fdfee5469d3704d970a36cd527b584,
-        type: 3}
     - target: {fileID: 8215361987637084790, guid: 4fe7a0ea31366ee4bbe5cf1b463a6896,
         type: 3}
       propertyPath: m_LocalPosition.x
