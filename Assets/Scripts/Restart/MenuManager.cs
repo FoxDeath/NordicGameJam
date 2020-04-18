@@ -8,31 +8,37 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     TextMeshProUGUI restartText;
-    [SerializeField] string text;
+    public string text;
 
     
     Image brightness;
     bool loading = false;
     bool starting = false;
-    [SerializeField] Loader.Scene sceneToLoad;
+    public Loader.Scene sceneToLoad;
+
+    public static MenuManager instance;
     private void Awake() 
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
+    void OnSceneWasLoaded(Scene scene, LoadSceneMode mode) 
     {
         try
         {
             brightness = GameObject.Find("Brightness").GetComponent<Image>();
-            restartText = GameObject.Find("RestartText").GetComponent<TextMeshProUGUI>();
         }
         catch
         {}
-    }
 
-
-    private void Start() 
-    {
-        if(restartText != null)
-        {
-            StartCoroutine(TypeSentence(text));
-        }
         if(brightness != null)
         {
             Color newColor = Color.black;
@@ -44,6 +50,7 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
+        SceneManager.sceneLoaded += OnSceneWasLoaded;
         Load();
     }
 
@@ -62,6 +69,7 @@ public class MenuManager : MonoBehaviour
             if (newColor.a >= 1)
             {
                 Loader.Load(sceneToLoad);
+                loading = false;
             }
         }
 
@@ -83,11 +91,13 @@ public class MenuManager : MonoBehaviour
         loading = true;
     }
 
-    IEnumerator TypeSentence(string sentence)
+    public IEnumerator TypeSentence()
     {
+        restartText = GameObject.Find("Sentance").GetComponent<TextMeshProUGUI>();
+
         restartText.text = "";
 
-        foreach(char letter in sentence.ToCharArray())
+        foreach(char letter in text.ToCharArray())
         {
             restartText.text += letter;
 
@@ -129,6 +139,37 @@ public class MenuManager : MonoBehaviour
             case "CarLabyrinth":
                 sceneToLoad = Loader.Scene.CarLabytinth;
                 Clock.GoingForward = false;
+                loading = true;
+            break;
+        }
+    }
+
+    public void Continue()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        switch(sceneName)
+        {
+            case "CatchFruit":
+                sceneToLoad = Loader.Scene.CrossRoad;
+                Clock.GoingForward = true;
+                loading = true;
+            break;
+
+            case "CrossRoad":
+                sceneToLoad = Loader.Scene.OfficePacMan;
+                Clock.GoingForward = true;
+                loading = true;
+            break;
+
+            case "OfficePacMan":
+                sceneToLoad = Loader.Scene.CarLabytinth;
+                Clock.GoingForward = true;
+                loading = true;
+            break;
+
+            case "CarLabyrinth":
+                sceneToLoad = Loader.Scene.EndGame;
+                Clock.GoingForward = true;
                 loading = true;
             break;
         }

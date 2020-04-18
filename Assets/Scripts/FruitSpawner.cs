@@ -9,6 +9,8 @@ public class FruitSpawner : MonoBehaviour
     [SerializeField, Range(0f, 100f)] float spawnRangeX;
     [SerializeField, Range(0f, 100f)] float spawnRangeY;
 
+    private bool first = true;
+
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +20,12 @@ public class FruitSpawner : MonoBehaviour
 
     IEnumerator SpawnFruit()
     {
+        if(first)
+        {
+            yield return new WaitForSeconds(4f);
+            first = false;
+        }
+
         Vector3 spawnPosition = new Vector3
         (
             Random.Range(-spawnRangeX, spawnRangeX),
