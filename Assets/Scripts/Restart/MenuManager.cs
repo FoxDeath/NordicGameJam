@@ -95,6 +95,8 @@ public class MenuManager : MonoBehaviour
 
     public IEnumerator TypeSentence()
     {
+        canClickButton = false;
+
         restartText = GameObject.Find("Sentance").GetComponent<TextMeshProUGUI>();
 
         restartText.text = "";
@@ -120,6 +122,8 @@ public class MenuManager : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
             }
         }
+        
+        canClickButton = true;
     }
 
     public void TryAgain()
