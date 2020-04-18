@@ -175,7 +175,7 @@ public class CrossRoadPlayerController : MonoBehaviour
             Destroy(transform.GetChild(0).gameObject);
         }
 
-        if (other.CompareTag("FinalSidewalk"))
+        if (other.CompareTag("Goal"))
         {
             Victory();
             Destroy(transform.GetChild(0).gameObject);

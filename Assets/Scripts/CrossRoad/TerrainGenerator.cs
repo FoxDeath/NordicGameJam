@@ -8,6 +8,7 @@ public class TerrainGenerator : MonoBehaviour
 
     [SerializeField] List<GameObject> terrains = new List<GameObject>();
     [SerializeField] GameObject lines;
+    [SerializeField] GameObject ending;
     private GameObject previousTerrain;
     private GameObject currentTerrain;
 
@@ -40,6 +41,8 @@ public class TerrainGenerator : MonoBehaviour
         {
             SpawnTerrain();
         }
+
+        Instantiate(ending, new Vector3(currentPosition.x, currentPosition.y, currentPosition.z + 0.25f), Quaternion.identity, transform);
     }
 
     public void SpawnTerrain()
