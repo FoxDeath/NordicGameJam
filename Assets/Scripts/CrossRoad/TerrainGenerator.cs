@@ -44,7 +44,7 @@ public class TerrainGenerator : MonoBehaviour
         if (previousTerrain && previousTerrain.CompareTag("Road") && currentTerrain.CompareTag("Road"))
         {
             currentPosition.z--;
-            previousTerrain.transform.Find("Lane 1").GetComponent<ObstacleSpawner>().enabled = false;
+            previousTerrain.transform.Find("Lane 1").GetComponent<ObstacleSpawner>().SetCanSpawn(false);
         }
 
         GameObject ins = Instantiate(currentTerrain, currentPosition, Quaternion.identity, transform);

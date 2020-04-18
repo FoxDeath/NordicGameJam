@@ -16,6 +16,8 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] int minDist = 0;
     [SerializeField] int maxDist = 5;
 
+    private bool canSpawn = true;
+
     void Start()
     {
         speed += Random.Range(-3, 3);
@@ -37,7 +39,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     IEnumerator SpawnBehaviour()
     {
-        while (true)
+        while (canSpawn)
         {
             Vector3 direction = new Vector3();
             Quaternion rotation = new Quaternion();
@@ -63,5 +65,10 @@ public class ObstacleSpawner : MonoBehaviour
 
             yield return new WaitForSeconds(cooldown);
         }
+    }
+
+    public void SetCanSpawn(bool canSpawn)
+    {
+        this.canSpawn = canSpawn;
     }
 }
