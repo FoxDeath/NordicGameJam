@@ -184,6 +184,11 @@ public class CrossRoadPlayerController : MonoBehaviour
 
     private void Victory()
     {
+        if(gameEnded)
+        {
+            return;
+        }
+        
         gameEnded = true;
         winMenu.SetActive(true);
         MenuManager endGameManager = FindObjectOfType<MenuManager>();

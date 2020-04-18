@@ -15,6 +15,7 @@ public class MenuManager : MonoBehaviour
     bool loading = false;
     bool starting = false;
     bool canClickButton = true;
+    bool writingText = false;
     public Loader.Scene sceneToLoad;
 
     public static MenuManager instance;
@@ -95,7 +96,7 @@ public class MenuManager : MonoBehaviour
 
     public IEnumerator TypeSentence()
     {
-        canClickButton = false;
+        writingText = true;
 
         restartText = GameObject.Find("Sentance").GetComponent<TextMeshProUGUI>();
 
@@ -119,16 +120,16 @@ public class MenuManager : MonoBehaviour
             }
             else
             {
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.07f);
             }
         }
         
-        canClickButton = true;
+        writingText = false;
     }
 
     public void TryAgain()
     {
-        if(!canClickButton)
+        if(!canClickButton || writingText)
         {
             return;
         }
@@ -178,7 +179,7 @@ public class MenuManager : MonoBehaviour
 
     public void Continue()
     {
-        if(!canClickButton)
+        if(!canClickButton || writingText)
         {
             return;
         }
@@ -232,6 +233,11 @@ public class MenuManager : MonoBehaviour
         {
             return;
         }
+
+        if(writingText)
+        {
+
+        }
         
         StartCoroutine(GiveUpBehaviour());
     }
@@ -279,6 +285,11 @@ public class MenuManager : MonoBehaviour
 
     public void Ready()
     {
+        if(!canClickButton)
+        {
+            return;
+        }
+
         string sceneName = SceneManager.GetActiveScene().name;
         switch (sceneName)
         {
