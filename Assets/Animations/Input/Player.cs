@@ -49,8 +49,8 @@ public class @Player : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d149f235-9c90-4fec-b1f8-0127dff24bb9"",
-                    ""path"": ""<Mouse>/position/x"",
+                    ""id"": ""a468017b-bb17-45a8-b8dc-6d8a1a1613cf"",
+                    ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
