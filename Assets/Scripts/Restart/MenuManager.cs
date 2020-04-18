@@ -66,7 +66,7 @@ public class MenuManager : MonoBehaviour
             }
             newColor.a += 1 * Time.deltaTime;
             brightness.color = newColor;
-            if (newColor.a >= 1)
+            if (newColor.a >= 2)
             {
                 Loader.Load(sceneToLoad);
                 loading = false;
@@ -80,6 +80,7 @@ public class MenuManager : MonoBehaviour
             brightness.color = newColor;
             if(newColor.a <= 0)
             {
+                StartMiniGame();
                 starting = false;
             }
         }
@@ -210,5 +211,55 @@ public class MenuManager : MonoBehaviour
         sceneToLoad = Loader.Scene.MainMenu;
         Clock.GoingForward = false;
         loading = true;
+    }
+
+    public void StartMiniGame()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        switch (sceneName)
+        {
+            case "CatchFruit":
+                text = "Are you ready for breakfast";
+                break;
+
+            case "CrossRoad":
+                
+                break;
+
+            case "OfficePacMan":
+                
+                break;
+
+            case "CarLabyrinth":
+                
+                break;
+        }
+
+        StartCoroutine(TypeSentence());
+    }
+
+    public void Ready()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        switch (sceneName)
+        {
+            case "CatchFruit":
+                StartCoroutine(FindObjectOfType<FruitSpawner>().SpawnFruit());
+                GameObject.Find("StartScreen").SetActive(false);
+                GameObject.Find("Recipe").SetActive(true);
+                break;
+
+            case "CrossRoad":
+                
+                break;
+
+            case "OfficePacMan":
+                
+                break;
+
+            case "CarLabyrinth":
+                
+                break;
+        }
     }
 }

@@ -11,21 +11,8 @@ public class FruitSpawner : MonoBehaviour
 
     private bool first = true;
 
-
-    // Start is called before the first frame update
-    void Start()
+    public IEnumerator SpawnFruit()
     {
-        StartCoroutine(SpawnFruit());
-    }
-
-    IEnumerator SpawnFruit()
-    {
-        if(first)
-        {
-            yield return new WaitForSeconds(4f);
-            first = false;
-        }
-
         Vector3 spawnPosition = new Vector3
         (
             Random.Range(-spawnRangeX, spawnRangeX),
