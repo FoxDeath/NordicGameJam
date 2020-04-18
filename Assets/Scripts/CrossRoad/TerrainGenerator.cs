@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
 {
     private static TerrainGenerator instance;
+
     [SerializeField] List<GameObject> terrains = new List<GameObject>();
+    private GameObject currentTerrain;
 
     private Vector3 currentPosition = new Vector3(0f, -1f, 0f);
 
@@ -31,9 +32,24 @@ public class TerrainGenerator : MonoBehaviour
 
     public void SpawnTerrain()
     {
-        GameObject currentTerrain = Instantiate(terrains[Random.Range(0, terrains.Count)], currentPosition, Quaternion.identity, transform);
+        GameObject previousTerrain = new GameObject();
+
+        if (currentTerrain)
+        {
+            previousTerrain = currentTerrain;
+        }
+
+        currentTerrain = terrains[Random.Range(0, terrains.Count)];
+
+        if (previousTerrain && previousTerrain.CompareTag("Road") && currentTerrain.CompareTag("Road"))
+        {
+            currentPosition.z--;
+            previousTerrain.transform.Find("Lane 1").GetComponent<ObstacleSpawner>().enabled = false;
+        }
+
+        GameObject ins = Instantiate(currentTerrain, currentPosition, Quaternion.identity, transform);
         
-        if (currentTerrain.CompareTag("Road"))
+        if (ins.CompareTag("Road"))
         {
             currentPosition.z += 2f;
         }

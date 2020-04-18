@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CrossRoadPlayerController : MonoBehaviour
 {
@@ -87,6 +85,14 @@ public class CrossRoadPlayerController : MonoBehaviour
         if (perc == 1f)
         {
             currentLerpTime = 0f;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Obstacle"))
+        {
+            Destroy(gameObject);
         }
     }
 }
