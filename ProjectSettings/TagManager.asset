@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - Tracks
   - Enemy
+  - Point
   layers:
   - Default
   - TransparentFX

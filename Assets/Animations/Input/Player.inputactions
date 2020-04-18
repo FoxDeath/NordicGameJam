@@ -48,6 +48,7 @@
             ]
         },
         {
+<<<<<<< master:Assets/Animations/Input/Player.inputactions
             "name": "CrossRoad",
             "id": "bd4ee27e-3e2d-434a-830b-d7d14746a4fc",
             "actions": [
@@ -55,30 +56,57 @@
                     "name": "Left",
                     "type": "Button",
                     "id": "ae704f53-345c-443d-b9d3-e94ac7e0e2ad",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
-                },
-                {
-                    "name": "Right",
-                    "type": "Button",
-                    "id": "99c6ea21-1e90-4c69-bf39-6ccaf6041727",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press"
-                },
+=======
+            "name": "Pacman",
+            "id": "c0c71ec7-78d9-4f08-86d7-c6e7930866f4",
+            "actions": [
                 {
                     "name": "Up",
                     "type": "Button",
-                    "id": "6b6ee4a8-9d06-4552-b00c-ecfce7721f04",
+                    "id": "9485f19d-327f-4bed-bd4b-4fcec29002af",
+>>>>>>> Added Point system, movement doesnt work as intended :^( but it can move:Assets/Input/Player.inputactions
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
                 },
                 {
+<<<<<<< master:Assets/Animations/Input/Player.inputactions
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "99c6ea21-1e90-4c69-bf39-6ccaf6041727",
+=======
+                    "name": "Down",
+                    "type": "Button",
+                    "id": "aee134c9-a313-4fd3-88d2-6cf4d91a95cb",
+>>>>>>> Added Point system, movement doesnt work as intended :^( but it can move:Assets/Input/Player.inputactions
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+<<<<<<< master:Assets/Animations/Input/Player.inputactions
+                    "name": "Up",
+                    "type": "Button",
+                    "id": "6b6ee4a8-9d06-4552-b00c-ecfce7721f04",
+=======
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "861a1751-5fb1-4752-a245-4e1ac9b37102",
+>>>>>>> Added Point system, movement doesnt work as intended :^( but it can move:Assets/Input/Player.inputactions
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+<<<<<<< master:Assets/Animations/Input/Player.inputactions
                     "name": "Down",
                     "type": "Button",
                     "id": "100314c0-85db-4d51-8d82-087524dae4d3",
+=======
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "5420a637-b0df-46d6-b4e2-25c06e869d61",
+>>>>>>> Added Point system, movement doesnt work as intended :^( but it can move:Assets/Input/Player.inputactions
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
@@ -87,89 +115,161 @@
             "bindings": [
                 {
                     "name": "",
+<<<<<<< master:Assets/Animations/Input/Player.inputactions
                     "id": "9796b0e7-abca-4836-a2e3-a96a70946a36",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Left",
+=======
+                    "id": "a805c580-b9c0-4736-a5d5-38a8878b7fc4",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Up",
+>>>>>>> Added Point system, movement doesnt work as intended :^( but it can move:Assets/Input/Player.inputactions
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
+<<<<<<< master:Assets/Animations/Input/Player.inputactions
                     "id": "c05e82a2-e796-437e-be07-dbce40d4287f",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Left",
+=======
+                    "id": "8c360b83-04be-4b04-8332-95d353564827",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Up",
+>>>>>>> Added Point system, movement doesnt work as intended :^( but it can move:Assets/Input/Player.inputactions
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
+<<<<<<< master:Assets/Animations/Input/Player.inputactions
                     "id": "bc187145-7235-4afe-8748-d75944b49f5e",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Right",
+=======
+                    "id": "81980351-7a11-4b68-8261-8c38ced0f2ff",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Down",
+>>>>>>> Added Point system, movement doesnt work as intended :^( but it can move:Assets/Input/Player.inputactions
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
+<<<<<<< master:Assets/Animations/Input/Player.inputactions
                     "id": "8076353f-6d30-407a-bf63-c80ef8a01e52",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Right",
+=======
+                    "id": "c4a177e0-568e-4875-b347-a4b57caa11b6",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Down",
+>>>>>>> Added Point system, movement doesnt work as intended :^( but it can move:Assets/Input/Player.inputactions
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
+<<<<<<< master:Assets/Animations/Input/Player.inputactions
                     "id": "d4713f9d-4b46-41d5-8c77-61c1522239d1",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Up",
+=======
+                    "id": "4e3cd34d-2c88-4d3a-823f-026368a88d7e",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
+>>>>>>> Added Point system, movement doesnt work as intended :^( but it can move:Assets/Input/Player.inputactions
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
+<<<<<<< master:Assets/Animations/Input/Player.inputactions
                     "id": "7df1833c-ba91-4b7d-99ae-562c3a0c3609",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Up",
+=======
+                    "id": "f5471de4-ce01-4184-9c86-948e57618467",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
+>>>>>>> Added Point system, movement doesnt work as intended :^( but it can move:Assets/Input/Player.inputactions
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
+<<<<<<< master:Assets/Animations/Input/Player.inputactions
                     "id": "543dde07-0ded-4b09-b336-6573fb8b79cd",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Down",
+=======
+                    "id": "0d6c2fde-8b52-4324-b79e-3921e244ab5d",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right",
+>>>>>>> Added Point system, movement doesnt work as intended :^( but it can move:Assets/Input/Player.inputactions
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
+<<<<<<< master:Assets/Animations/Input/Player.inputactions
                     "id": "37b37c78-36ea-4b6d-a57f-f949d58ce856",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Down",
+=======
+                    "id": "56f6272e-b43e-4837-be01-c249486e2c91",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right",
+>>>>>>> Added Point system, movement doesnt work as intended :^( but it can move:Assets/Input/Player.inputactions
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

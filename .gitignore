@@ -58,3 +58,5 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+
+Assets/Input/Player.cs.meta~Added Point system, movement doesnt work as intended 
