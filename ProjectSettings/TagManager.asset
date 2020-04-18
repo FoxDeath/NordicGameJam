@@ -12,6 +12,7 @@ TagManager:
   - Obstacle
   - Tracks
   - Goal
+  - Restriction
   layers:
   - Default
   - TransparentFX
