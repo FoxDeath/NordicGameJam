@@ -115,68 +115,98 @@ public class MenuManager : MonoBehaviour
 
     public void TryAgain()
     {
+        StartCoroutine(TryAgainBehaviour());
+    }
+
+    IEnumerator TryAgainBehaviour()
+    {
+        text = "You probably won't make it this time again.";
+        yield return StartCoroutine(TypeSentence());
+
+        yield return new WaitForSeconds(2f);
+
         string sceneName = SceneManager.GetActiveScene().name;
-        switch(sceneName)
+        switch (sceneName)
         {
             case "CatchFruit":
                 sceneToLoad = Loader.Scene.CatchFruit;
                 Clock.GoingForward = false;
                 loading = true;
-            break;
+                break;
 
             case "CrossRoad":
                 sceneToLoad = Loader.Scene.CrossRoad;
                 Clock.GoingForward = false;
                 loading = true;
-            break;
+                break;
 
             case "OfficePacMan":
                 sceneToLoad = Loader.Scene.OfficePacMan;
                 Clock.GoingForward = false;
                 loading = true;
-            break;
+                break;
 
             case "CarLabyrinth":
                 sceneToLoad = Loader.Scene.CarLabytinth;
                 Clock.GoingForward = false;
                 loading = true;
-            break;
+                break;
         }
     }
 
     public void Continue()
     {
+        StartCoroutine(ContinueBehaviour());
+    }
+
+    IEnumerator ContinueBehaviour()
+    {
+        text = "Sure, go on. You will fail eventually.";
+        yield return StartCoroutine(TypeSentence());
+
+        yield return new WaitForSeconds(2f);
+
         string sceneName = SceneManager.GetActiveScene().name;
-        switch(sceneName)
+        switch (sceneName)
         {
             case "CatchFruit":
                 sceneToLoad = Loader.Scene.CrossRoad;
                 Clock.GoingForward = true;
                 loading = true;
-            break;
+                break;
 
             case "CrossRoad":
                 sceneToLoad = Loader.Scene.OfficePacMan;
                 Clock.GoingForward = true;
                 loading = true;
-            break;
+                break;
 
             case "OfficePacMan":
                 sceneToLoad = Loader.Scene.CarLabytinth;
                 Clock.GoingForward = true;
                 loading = true;
-            break;
+                break;
 
             case "CarLabyrinth":
                 sceneToLoad = Loader.Scene.EndGame;
                 Clock.GoingForward = true;
                 loading = true;
-            break;
+                break;
         }
     }
 
     public void GiveUp()
     {
+        StartCoroutine(GiveUpBehaviour());
+    }
+
+    IEnumerator GiveUpBehaviour()
+    {
+        text = "That's right, give up.";
+        yield return StartCoroutine(TypeSentence());
+
+        yield return new WaitForSeconds(2f);
+
         sceneToLoad = Loader.Scene.MainMenu;
         Clock.GoingForward = false;
         loading = true;

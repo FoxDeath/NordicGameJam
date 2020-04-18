@@ -72,7 +72,7 @@ public class Recipe : MonoBehaviour
         gameEnded = true;
         winMenu.SetActive(true);
         MenuManager endGameManager = FindObjectOfType<MenuManager>();
-        endGameManager.text = "You managed to do it somehow this time";
+        endGameManager.text = "You managed to do it somehow this time.";
         StartCoroutine(endGameManager.TypeSentence());
     }
 
@@ -81,7 +81,7 @@ public class Recipe : MonoBehaviour
         gameEnded = true;
         tryAgainMenu.SetActive(true);
         MenuManager endGameManager = FindObjectOfType<MenuManager>();
-        endGameManager.text = "Looks like you failed again you dimwit";
+        endGameManager.text = "Looks like you failed again you dimwit.";
         StartCoroutine(endGameManager.TypeSentence());
     }
 
@@ -103,6 +103,5 @@ public class Recipe : MonoBehaviour
             default:
             break;
         }
-
     }
 }
