@@ -35,7 +35,7 @@ public class MenuManager : MonoBehaviour
         }
         if(brightness != null)
         {
-            Color newColor = brightness.color;
+            Color newColor = Color.black;
             newColor.a = 1;
             brightness.color = newColor;
             starting = true;
@@ -52,6 +52,11 @@ public class MenuManager : MonoBehaviour
         if (loading)
         {
             Color newColor = brightness.color;
+            if(newColor.CompareRGB(Color.black))
+            {
+                newColor = Color.white;
+                newColor.a = 0;
+            }
             newColor.a += 1 * Time.deltaTime;
             brightness.color = newColor;
             if (newColor.a >= 1)
@@ -74,6 +79,7 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
+        Clock.GoingForward = true;
         loading = true;
     }
 
@@ -118,12 +124,14 @@ public class MenuManager : MonoBehaviour
                 sceneToLoad = Loader.Scene.CarLabytinth;
             break;
         }
-        StartGame();
+        Clock.GoingForward = false;
+        loading = true;
     }
 
     public void GiveUp()
     {
         sceneToLoad = Loader.Scene.MainMenu;
-        StartGame();
+        Clock.GoingForward = false;
+        loading = true;
     }
 }

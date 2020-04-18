@@ -12,7 +12,7 @@ public class LoadingBarProgress : MonoBehaviour
 
     IEnumerator Loading()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
         Loader.loadingFinished = true;
     }
