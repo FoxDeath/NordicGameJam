@@ -246,6 +246,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1905701585554462490, guid: 8a3c4cb78b7f00e408db7396333cf271, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8a3c4cb78b7f00e408db7396333cf271, type: 3}
+--- !u!1 &562354023 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1606489989802165272, guid: 8a3c4cb78b7f00e408db7396333cf271,
+    type: 3}
+  m_PrefabInstance: {fileID: 562354022}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &573096449
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +329,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &573096453
 RectTransform:
@@ -710,6 +716,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3a6a7b3e55028d408c72c0d581bd796, type: 3}
+--- !u!1 &1571862286 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1606489989802165272, guid: d3a6a7b3e55028d408c72c0d581bd796,
+    type: 3}
+  m_PrefabInstance: {fileID: 1571862285}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1692974690
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,6 +1082,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fc10c26a441c9b4db08a2190531b5c8, type: 3}
+--- !u!1 &3152488909468242888 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3152488909164649737, guid: 9fc10c26a441c9b4db08a2190531b5c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 3152488909468242887}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3152488909468242889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3152488909468242888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596e5bb0c56268543915da089e070a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freze: 0
 --- !u!1001 &7993261940606083128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1132,6 +1163,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7993261941591265650, guid: 725a5578974992b4ea44fc0ecda837ab,
+        type: 3}
+      propertyPath: tryAgainMenu
+      value: 
+      objectReference: {fileID: 562354023}
+    - target: {fileID: 7993261941591265650, guid: 725a5578974992b4ea44fc0ecda837ab,
+        type: 3}
+      propertyPath: winMenu
+      value: 
+      objectReference: {fileID: 1571862286}
     - target: {fileID: 7993261941591265663, guid: 725a5578974992b4ea44fc0ecda837ab,
         type: 3}
       propertyPath: m_Name

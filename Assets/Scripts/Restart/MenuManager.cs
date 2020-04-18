@@ -286,6 +286,7 @@ public class MenuManager : MonoBehaviour
 
             case "CrossRoad":
                 GameObject.Find("StartScreen").SetActive(false);
+                FindObjectOfType<CrossRoadPlayerController>().gameStarted = true;
                 break;
 
             case "OfficePacMan":
