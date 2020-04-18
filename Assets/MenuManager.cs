@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
     
     Image brightness;
     bool loading = false;
+    bool starting = false;
     [SerializeField] Loader.Scene sceneToLoad;
     private void Awake() 
     {
@@ -32,14 +33,21 @@ public class MenuManager : MonoBehaviour
         {
             StartCoroutine(TypeSentence(text));
         }
+        if(brightness != null)
+        {
+            Color newColor = brightness.color;
+            newColor.a = 1;
+            brightness.color = newColor;
+            starting = true;
+        }
     }
 
     private void Update()
     {
-        Load(sceneToLoad);
+        Load();
     }
 
-    private void Load(Loader.Scene scene)
+    private void Load()
     {
         if (loading)
         {
@@ -48,7 +56,18 @@ public class MenuManager : MonoBehaviour
             brightness.color = newColor;
             if (newColor.a >= 1)
             {
-                Loader.Load(scene);
+                Loader.Load(sceneToLoad);
+            }
+        }
+
+        if(starting)
+        {
+            Color newColor = brightness.color;
+            newColor.a -= 1 * Time.deltaTime;
+            brightness.color = newColor;
+            if(newColor.a <= 0)
+            {
+                starting = false;
             }
         }
     }
