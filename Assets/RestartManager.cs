@@ -7,9 +7,10 @@ using TMPro;
 public class RestartManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI restartText;
+    [SerializeField] string text;
 
     private void Start() {
-        StartCoroutine(TypeSentence(restartText.text));
+        StartCoroutine(TypeSentence(text));
     }
     IEnumerator TypeSentence(string sentence)
     {
