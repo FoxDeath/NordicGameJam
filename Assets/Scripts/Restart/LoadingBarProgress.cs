@@ -12,8 +12,18 @@ public class LoadingBarProgress : MonoBehaviour
 
     IEnumerator Loading()
     {
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+
+        if(Clock.GoingForward)
+        audioManager.Play("clock");
+        else
+        audioManager.Play("clockReverse");
+
         yield return new WaitForSeconds(3f);
 
+        audioManager.Stop("clock");
+        audioManager.Stop("clockReverse");
+        
         Loader.loadingFinished = true;
     }
 }
