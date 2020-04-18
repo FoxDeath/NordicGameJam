@@ -110,22 +110,28 @@ public class MenuManager : MonoBehaviour
         {
             case "CatchFruit":
                 sceneToLoad = Loader.Scene.CatchFruit;
+                Clock.GoingForward = false;
+                loading = true;
             break;
 
             case "CrossRoad":
                 sceneToLoad = Loader.Scene.CrossRoad;
+                Clock.GoingForward = false;
+                loading = true;
             break;
 
             case "OfficePacMan":
                 sceneToLoad = Loader.Scene.OfficePacMan;
+                Clock.GoingForward = false;
+                loading = true;
             break;
 
             case "CarLabyrinth":
                 sceneToLoad = Loader.Scene.CarLabytinth;
+                Clock.GoingForward = false;
+                loading = true;
             break;
         }
-        Clock.GoingForward = false;
-        loading = true;
     }
 
     public void GiveUp()
