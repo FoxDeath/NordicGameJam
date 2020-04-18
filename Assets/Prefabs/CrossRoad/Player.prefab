@@ -102,6 +102,9 @@ MonoBehaviour:
   lerpSpeed: 8
   scaleSpeed: 4
   scaleChange: 0.1
+  tryAgainMenu: {fileID: 0}
+  winMenu: {fileID: 0}
+  gameStarted: 0
 --- !u!54 &-6504590251451865277
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ TagManager:
   - Pavement
   - Obstacle
   - Tracks
+  - Goal
   - Enemy
   - Point
   layers:
