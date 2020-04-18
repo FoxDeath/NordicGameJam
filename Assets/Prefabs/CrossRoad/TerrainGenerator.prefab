@@ -49,3 +49,6 @@ MonoBehaviour:
   - {fileID: 3194049192635805715, guid: 2e38c25e481b8304fb0ef38fe83307a0, type: 3}
   lines: {fileID: 8045567541970867317, guid: 27fdfee5469d3704d970a36cd527b584, type: 3}
   levelLength: 30
+  maxRoadsAfterAnother: 2
+  maxPavementsAfterAnother: 2
+  maxTracksAfterAnother: 3

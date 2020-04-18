@@ -20,7 +20,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     void Start()
     {
-        speed += Random.Range(-3, 3);
+        speed += Random.Range(-3, 2);
 
         container = GameObject.Find("Container").transform;
         xScale = spawnable.transform.Find("Mesh").localScale.x + 0.3f;

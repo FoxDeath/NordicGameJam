@@ -14,7 +14,7 @@ public class TerrainGenerator : MonoBehaviour
     private Vector3 currentPosition = new Vector3(0f, -1f, 4f);
 
     [SerializeField] int levelLength;
-    [SerializeField] int maxRoadsAfterAnother = 3;
+    [SerializeField] int maxRoadsAfterAnother = 2;
     [SerializeField] int maxPavementsAfterAnother = 2;
     [SerializeField] int maxTracksAfterAnother = 3;
 
