@@ -27,6 +27,9 @@ public static class Loader
 
     public static bool loadingFinished;
 
+    
+    public static bool ClockSkip = false;
+
     public static void Load(Scene scene)
     {
         //Set the loader callback action to load target scene
@@ -36,7 +39,17 @@ public static class Loader
         };
 
         //Load loading scene
-        SceneManager.LoadScene(Scene.Loading.ToString());
+        if(!Loader.ClockSkip)
+        {
+            SceneManager.LoadScene(Scene.Loading.ToString());
+        }
+        else
+        {
+            
+            Loader.ClockSkip = false;
+        SceneManager.LoadSceneAsync(scene.ToString());
+
+        }
     }
 
     //Loads the scene asynchronously inside a coroutine 
