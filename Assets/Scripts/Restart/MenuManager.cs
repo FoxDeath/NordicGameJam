@@ -96,6 +96,11 @@ public class MenuManager : MonoBehaviour
 
     public IEnumerator TypeSentence()
     {
+        foreach (Button b in GetComponents<Button>())
+        {
+            b.gameObject.SetActive(false);
+        }
+
         writingText = true;
 
         restartText = GameObject.Find("Sentance").GetComponent<TextMeshProUGUI>();
