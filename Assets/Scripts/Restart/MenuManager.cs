@@ -234,7 +234,7 @@ public class MenuManager : MonoBehaviour
 
     public void GiveUp()
     {
-        if(!canClickButton)
+        if(!canClickButton || writingText)
         {
             return;
         }
