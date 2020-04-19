@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 3876954866472558034}
   m_Layer: 5
   m_Name: ReadyButton
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -663,7 +663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7417562099904792431
 RectTransform:
   m_ObjectHideFlags: 0

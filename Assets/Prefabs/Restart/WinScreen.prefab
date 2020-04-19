@@ -543,7 +543,7 @@ GameObject:
   - component: {fileID: 1701353253181193137}
   m_Layer: 5
   m_Name: GiveUpButton
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -664,7 +664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8985529254004236862
 RectTransform:
   m_ObjectHideFlags: 0
@@ -822,7 +822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7342818243798637879
 RectTransform:
   m_ObjectHideFlags: 0
@@ -975,7 +975,7 @@ GameObject:
   - component: {fileID: 7621025620123356156}
   m_Layer: 5
   m_Name: ContinueButton
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
