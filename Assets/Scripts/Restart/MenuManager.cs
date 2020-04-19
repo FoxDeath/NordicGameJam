@@ -57,6 +57,16 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
+        if(brightness == null)
+        {
+            try
+        {
+            brightness = GameObject.Find("Brightness").GetComponent<Image>();
+        }
+        catch
+        {}
+        }
+
         SceneManager.sceneLoaded += OnSceneWasLoaded;
         Load();
     }
@@ -255,6 +265,7 @@ public class MenuManager : MonoBehaviour
     public void AfterScenario()
     {
         sceneToLoad = sceneAfterScenario;
+        Loader.ClockSkip = true;
         Clock.GoingForward = true;
         loading = true;
     }
