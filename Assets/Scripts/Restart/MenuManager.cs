@@ -296,7 +296,6 @@ public class MenuManager : MonoBehaviour
             case "CatchFruit":
                 StartCoroutine(FindObjectOfType<FruitSpawner>().SpawnFruit());
                 GameObject.Find("StartScreen").SetActive(false);
-                GameObject.Find("RecipeParent").transform.GetChild(0).gameObject.SetActive(true);
                 break;
 
             case "CrossRoad":

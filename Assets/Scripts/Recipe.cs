@@ -5,9 +5,9 @@ using TMPro;
 
 public class Recipe : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI bananaNumberText;
-    [SerializeField] TextMeshProUGUI pearNumberText;
-    [SerializeField] TextMeshProUGUI appleNumberText;
+    [SerializeField] TextMesh bananaNumberText;
+    [SerializeField] TextMesh pearNumberText;
+    [SerializeField] TextMesh appleNumberText;
 
     [SerializeField] GameObject tryAgainMenu;
     [SerializeField] GameObject winMenu;
