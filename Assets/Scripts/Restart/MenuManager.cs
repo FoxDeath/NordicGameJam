@@ -258,7 +258,7 @@ public class MenuManager : MonoBehaviour
                 loading = true;
                 break;
 
-            case "OfficePacMan":
+            case "OfficePacman":
                 sceneAfterScenario = Loader.Scene.MainMenu;
                 sceneToLoad = Loader.Scene.ScenarioPrint;
                 Clock.GoingForward = true;
