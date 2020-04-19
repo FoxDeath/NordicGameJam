@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Input input;
     private Vector3 direction = Vector3.zero;
+    private ParticleSystem particle;
 
     public static bool gameStarted;
 
@@ -41,6 +42,11 @@ public class PlayerMovement : MonoBehaviour
         };
     }
 
+    void Start()
+    {
+        particle = GetComponentInChildren<ParticleSystem>();
+    }
+
     void FixedUpdate()
     {
         if(!gameStarted || ScoreScript.gameEnded)
@@ -54,5 +60,13 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
         transform.position += direction * speed * Time.deltaTime;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Enemy")
+        {
+            particle.Play();
+        }
     }
 }
