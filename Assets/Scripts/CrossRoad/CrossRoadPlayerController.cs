@@ -45,6 +45,7 @@ public class CrossRoadPlayerController : MonoBehaviour
             if (perc >= 1.5f)
             {
                 FindObjectOfType<AudioManager>().Play("blop");
+                if(!gameEnded)
                 anim.Play("Jump");
                 currentLerpTime = 0f;
                 currentScaleTime = 0f;
@@ -74,6 +75,7 @@ public class CrossRoadPlayerController : MonoBehaviour
             if (perc >= 1.5f)
             {
                 FindObjectOfType<AudioManager>().Play("blop");
+                if(!gameEnded)
                 anim.Play("Jump");
                 currentLerpTime = 0f;
                 currentScaleTime = 0f;
@@ -103,6 +105,7 @@ public class CrossRoadPlayerController : MonoBehaviour
             if (perc >= 1.5f)
             {
                 FindObjectOfType<AudioManager>().Play("blop");
+                if(!gameEnded)
                 anim.Play("Jump");
                 currentLerpTime = 0f;
                 currentScaleTime = 0f;
@@ -132,6 +135,7 @@ public class CrossRoadPlayerController : MonoBehaviour
             if (perc >= 1.5f)
             {
                 FindObjectOfType<AudioManager>().Play("blop");        
+                if(!gameEnded)
                 anim.Play("Jump");
                 currentLerpTime = 0f;
                 currentScaleTime = 0f;
@@ -238,5 +242,9 @@ public class CrossRoadPlayerController : MonoBehaviour
 
         endGameManager.text = texts[Random.Range(0, texts.Length - 1)];
         StartCoroutine(endGameManager.TypeSentence("d"));
+    }
+
+    private void OnDestroy() {
+        input.Disable();
     }
 }
