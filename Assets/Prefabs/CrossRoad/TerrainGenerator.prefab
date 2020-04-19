@@ -44,11 +44,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrains:
-  - {fileID: 7492533525228947729, guid: 304f431204fdeba4e89f48eb5141bc1a, type: 3}
+  - {fileID: 2158538926828255327, guid: 304f431204fdeba4e89f48eb5141bc1a, type: 3}
   - {fileID: 5221511633290950639, guid: 2b73dcb92afaac649a9c2da361c3d01b, type: 3}
   - {fileID: 3194049192635805715, guid: 2e38c25e481b8304fb0ef38fe83307a0, type: 3}
   lines: {fileID: 8045567541970867317, guid: 27fdfee5469d3704d970a36cd527b584, type: 3}
-  levelLength: 30
+  ending: {fileID: 5646895249661948304, guid: a6967abac506d674587c78f567de2633, type: 3}
+  levelLength: 25
   maxRoadsAfterAnother: 2
-  maxPavementsAfterAnother: 2
+  maxPavementsAfterAnother: 1
   maxTracksAfterAnother: 3

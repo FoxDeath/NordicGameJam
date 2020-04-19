@@ -1,39 +1,55 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DrawLine : MonoBehaviour
 {
-    public GameObject linePrefab;
-    public GameObject currentLine;
+    [SerializeField] GameObject linePrefab;
+    private GameObject currentLine;
     
-    public LineRenderer lineRenderer;
-    public EdgeCollider2D edgeCollider;
+    private LineRenderer lineRenderer;
+    private EdgeCollider2D edgeCollider;
 
     public List<Vector2> mousePossition;
+    private Vector2 currentMousePossition;
 
+    private PlayerInput playerInput;
 
-    // Start is called before the first frame update
-    void Start()
+    private bool mouseClicked = false;
+
+    void Awake()
     {
-        
+        playerInput = new PlayerInput();
+        playerInput.Enable();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        playerInput.CatchFruit.MousePosition.performed += context => 
         {
+            currentMousePossition = context.ReadValue<Vector2>();
+        };
+
+        if(playerInput.CatchFruit.Click.triggered)
+        {
+            mouseClicked = true;
             CreateLine();
         }
-        if(Input.GetMouseButton(0))
+        if(mouseClicked)
         {
-            Vector2 tempMousePossition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 tempMousePossition = Camera.main.ScreenToWorldPoint(currentMousePossition);
             if(Vector3.Distance(tempMousePossition, mousePossition[mousePossition.Count-1]) > 0.1f)
             {
                 UpdateLine(tempMousePossition);
             }
         }
+
+        playerInput.CatchFruit.Click.canceled += _ =>
+        {
+            mouseClicked = false;
+            Destroy(currentLine);
+        };
     }
 
     void CreateLine()
@@ -43,8 +59,8 @@ public class DrawLine : MonoBehaviour
         edgeCollider = currentLine.GetComponent<EdgeCollider2D>();
 
         mousePossition.Clear();
-        mousePossition.Add(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        mousePossition.Add(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        mousePossition.Add(Camera.main.ScreenToWorldPoint(currentMousePossition));
+        mousePossition.Add(Camera.main.ScreenToWorldPoint(currentMousePossition));
 
         lineRenderer.SetPosition(0, mousePossition[0]);
         lineRenderer.SetPosition(1, mousePossition[1]);

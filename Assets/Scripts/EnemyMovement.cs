@@ -14,6 +14,11 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+        if(!PlayerMovement.gameStarted || ScoreScript.gameEnded)
+        {
+            return;
+        }
+
         FaceTarget();
         agent.SetDestination(player.position);
     }
@@ -29,7 +34,8 @@ public class EnemyMovement : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            print("get fucked");
+            FindObjectOfType<ScoreScript>().EndGame();
+            Destroy(other.transform.GetChild(0).gameObject);
         }
     }
 }

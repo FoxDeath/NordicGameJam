@@ -4,12 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Line
+  - Fruit
+  - NotFruit
   - Road
   - Pavement
   - Obstacle
   - Tracks
+  - Goal
   - Enemy
   - Point
+  - Restriction
   layers:
   - Default
   - TransparentFX

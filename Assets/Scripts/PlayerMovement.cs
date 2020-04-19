@@ -7,8 +7,12 @@ public class PlayerMovement : MonoBehaviour
     private Input input;
     private Vector3 direction = Vector3.zero;
 
+    public static bool gameStarted;
+
     void Awake()
     {
+        gameStarted = false;
+
         input = new Input();
         input.Enable();
 
@@ -39,6 +43,11 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(!gameStarted || ScoreScript.gameEnded)
+        {
+            return;
+        }
+
         Move();
     }
 

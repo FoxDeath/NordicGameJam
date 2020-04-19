@@ -8,31 +8,39 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     TextMeshProUGUI restartText;
-    [SerializeField] string text;
+    public string text;
 
     
     Image brightness;
     bool loading = false;
     bool starting = false;
-    [SerializeField] Loader.Scene sceneToLoad;
+    bool canClickButton = true;
+    bool writingText = false;
+    public Loader.Scene sceneToLoad;
+
+    public static MenuManager instance;
     private void Awake() 
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
+    void OnSceneWasLoaded(Scene scene, LoadSceneMode mode) 
     {
         try
         {
             brightness = GameObject.Find("Brightness").GetComponent<Image>();
-            restartText = GameObject.Find("RestartText").GetComponent<TextMeshProUGUI>();
         }
         catch
         {}
-    }
 
-
-    private void Start() 
-    {
-        if(restartText != null)
-        {
-            StartCoroutine(TypeSentence(text));
-        }
         if(brightness != null)
         {
             Color newColor = Color.black;
@@ -44,6 +52,7 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
+        SceneManager.sceneLoaded += OnSceneWasLoaded;
         Load();
     }
 
@@ -59,9 +68,10 @@ public class MenuManager : MonoBehaviour
             }
             newColor.a += 1 * Time.deltaTime;
             brightness.color = newColor;
-            if (newColor.a >= 1)
+            if (newColor.a >= 2)
             {
                 Loader.Load(sceneToLoad);
+                loading = false;
             }
         }
 
@@ -72,6 +82,7 @@ public class MenuManager : MonoBehaviour
             brightness.color = newColor;
             if(newColor.a <= 0)
             {
+                StartMiniGame();
                 starting = false;
             }
         }
@@ -83,13 +94,25 @@ public class MenuManager : MonoBehaviour
         loading = true;
     }
 
-    IEnumerator TypeSentence(string sentence)
+    public IEnumerator TypeSentence()
     {
+        writingText = true;
+
+        restartText = GameObject.Find("Sentance").GetComponent<TextMeshProUGUI>();
+
         restartText.text = "";
 
-        foreach(char letter in sentence.ToCharArray())
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+
+        foreach(char letter in text.ToCharArray())
         {
             restartText.text += letter;
+
+            if(!letter.Equals(' '))
+            {
+                audioManager.SetPitch("voice", Random.Range(0.8f, 1.2f));
+                audioManager.Play("voice");
+            }
 
             if(letter.Equals('.') || letter.Equals('?') || letter.Equals('!'))
             {
@@ -97,47 +120,199 @@ public class MenuManager : MonoBehaviour
             }
             else
             {
-                yield return new WaitForSeconds(0.03f);
-
+                yield return new WaitForSeconds(0.07f);
             }
         }
+        
+        writingText = false;
     }
 
     public void TryAgain()
     {
+        if(!canClickButton || writingText)
+        {
+            return;
+        }
+        
+        StartCoroutine(TryAgainBehaviour());
+    }
+
+    IEnumerator TryAgainBehaviour()
+    {
+        canClickButton = false;
+
+        text = "You probably won't make it this time again.";
+        yield return StartCoroutine(TypeSentence());
+
+        yield return new WaitForSeconds(2f);
+
         string sceneName = SceneManager.GetActiveScene().name;
-        switch(sceneName)
+        switch (sceneName)
         {
             case "CatchFruit":
                 sceneToLoad = Loader.Scene.CatchFruit;
                 Clock.GoingForward = false;
                 loading = true;
-            break;
+                break;
 
             case "CrossRoad":
                 sceneToLoad = Loader.Scene.CrossRoad;
                 Clock.GoingForward = false;
                 loading = true;
-            break;
+                break;
 
-            case "OfficePacMan":
+            case "OfficePacman":
                 sceneToLoad = Loader.Scene.OfficePacMan;
                 Clock.GoingForward = false;
                 loading = true;
-            break;
+                break;
 
             case "CarLabyrinth":
                 sceneToLoad = Loader.Scene.CarLabytinth;
                 Clock.GoingForward = false;
                 loading = true;
-            break;
+                break;
         }
+
+        canClickButton = true;
+    }
+
+    public void Continue()
+    {
+        if(!canClickButton || writingText)
+        {
+            return;
+        }
+        
+        StartCoroutine(ContinueBehaviour());
+    }
+
+    IEnumerator ContinueBehaviour()
+    {
+        canClickButton = false;
+
+        text = "Sure, go on. You will fail eventually.";
+        yield return StartCoroutine(TypeSentence());
+
+        yield return new WaitForSeconds(2f);
+
+        string sceneName = SceneManager.GetActiveScene().name;
+        switch (sceneName)
+        {
+            case "CatchFruit":
+                sceneToLoad = Loader.Scene.CrossRoad;
+                Clock.GoingForward = true;
+                loading = true;
+                break;
+
+            case "CrossRoad":
+                sceneToLoad = Loader.Scene.OfficePacMan;
+                Clock.GoingForward = true;
+                loading = true;
+                break;
+
+            case "OfficePacman":
+                sceneToLoad = Loader.Scene.CarLabytinth;
+                Clock.GoingForward = true;
+                loading = true;
+                break;
+
+            case "CarLabyrinth":
+                sceneToLoad = Loader.Scene.EndGame;
+                Clock.GoingForward = true;
+                loading = true;
+                break;
+        }
+
+        canClickButton = true;
     }
 
     public void GiveUp()
     {
+        if(!canClickButton)
+        {
+            return;
+        }
+
+        if(writingText)
+        {
+
+        }
+        
+        StartCoroutine(GiveUpBehaviour());
+    }
+
+    IEnumerator GiveUpBehaviour()
+    {
+        canClickButton = false;
+
+        text = "That's right, give up.";
+        yield return StartCoroutine(TypeSentence());
+
+        yield return new WaitForSeconds(2f);
+
         sceneToLoad = Loader.Scene.MainMenu;
         Clock.GoingForward = false;
         loading = true;
+
+        canClickButton = true;
+    }
+
+    public void StartMiniGame()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        switch (sceneName)
+        {
+            case "CatchFruit":
+                text = "Are you ready for breakfast!";
+                break;
+
+            case "CrossRoad":
+                text = "Cross the road you bastard!";
+                break;
+
+            case "OfficePacman":
+                text = "Work! Work! Work!";
+                break;
+
+            case "CarLabyrinth":
+                
+                break;
+        }
+
+        StartCoroutine(TypeSentence());
+    }
+
+    public void Ready()
+    {
+        if(!canClickButton || writingText)
+        {
+            return;
+        }
+
+        string sceneName = SceneManager.GetActiveScene().name;
+        switch (sceneName)
+        {
+            case "CatchFruit":
+                StartCoroutine(FindObjectOfType<FruitSpawner>().SpawnFruit());
+                GameObject.Find("StartScreen").SetActive(false);
+                GameObject.Find("RecipeParent").transform.GetChild(0).gameObject.SetActive(true);
+                break;
+
+            case "CrossRoad":
+                GameObject.Find("StartScreen").SetActive(false);
+                FindObjectOfType<CrossRoadPlayerController>().gameStarted = true;
+                break;
+
+            case "OfficePacman":
+                GameObject.Find("StartScreen").SetActive(false);
+                PlayerMovement.gameStarted = true;
+                GameObject.Find("GameUI").transform.GetChild(0).gameObject.SetActive(true);
+                break;
+
+            case "CarLabyrinth":
+                
+                break;
+        }
     }
 }
