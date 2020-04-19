@@ -96,10 +96,7 @@ public class MenuManager : MonoBehaviour
 
     public IEnumerator TypeSentence()
     {
-        foreach (Button b in GetComponents<Button>())
-        {
-            b.gameObject.SetActive(false);
-        }
+        TurnButtons(false);
 
         writingText = true;
 
@@ -121,15 +118,25 @@ public class MenuManager : MonoBehaviour
 
             if(letter.Equals('.') || letter.Equals('?') || letter.Equals('!'))
             {
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.4f);
             }
             else
             {
-                yield return new WaitForSeconds(0.07f);
+                yield return new WaitForSeconds(0.05f);
             }
         }
-        
+
+        TurnButtons(true);
+
         writingText = false;
+    }
+
+    private void TurnButtons(bool state)
+    {
+        foreach (GameObject b in GameObject.FindGameObjectsWithTag("Button"))
+        {
+            b.transform.GetChild(0).gameObject.SetActive(state);
+        }
     }
 
     public void TryAgain()
@@ -148,6 +155,8 @@ public class MenuManager : MonoBehaviour
 
         text = "You probably won't make it this time again.";
         yield return StartCoroutine(TypeSentence());
+
+        TurnButtons(false);
 
         yield return new WaitForSeconds(2f);
 
@@ -194,10 +203,10 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator ContinueBehaviour()
     {
-        canClickButton = false;
-
         text = "Sure, go on. You will fail eventually.";
         yield return StartCoroutine(TypeSentence());
+
+        TurnButtons(false);
 
         yield return new WaitForSeconds(2f);
 
@@ -249,10 +258,10 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator GiveUpBehaviour()
     {
-        canClickButton = false;
-
         text = "That's right, give up.";
         yield return StartCoroutine(TypeSentence());
+
+        TurnButtons(false);
 
         yield return new WaitForSeconds(2f);
 
