@@ -164,8 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267227693ac229a4c948f9f61c87f946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: 
   sceneToLoad: 0
+  depressionFont: {fileID: 11400000, guid: 7c5a83af1b2e54947bcddd77f5aaa480, type: 2}
+  scenarioFont: {fileID: 11400000, guid: c71d4f7cf4522d64abccfed98a99bd91, type: 2}
+  text: 
 --- !u!4 &78716011
 Transform:
   m_ObjectHideFlags: 0

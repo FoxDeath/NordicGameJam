@@ -42,8 +42,13 @@ public class ScoreScript : MonoBehaviour
         gameEnded = true;
         winMenu.SetActive(true);
         MenuManager endGameManager = FindObjectOfType<MenuManager>();
-        endGameManager.text = "You managed to do it somehow this time.";
-        StartCoroutine(endGameManager.TypeSentence());
+
+        string[] texts = new string[2];
+        texts[0] = "so persistent, aren't we.";
+        texts[1] = "do you really think there is anything better to come.";
+
+        endGameManager.text = texts[Random.Range(0, texts.Length - 1)];
+        StartCoroutine(endGameManager.TypeSentence("d"));
     }
 
     public void EndGame()
@@ -56,8 +61,12 @@ public class ScoreScript : MonoBehaviour
         gameEnded = true;
         tryAgainMenu.SetActive(true);
         MenuManager endGameManager = FindObjectOfType<MenuManager>();
-        endGameManager.text = "Looks like you failed again you dimwit.";
-        StartCoroutine(endGameManager.TypeSentence());
+
+        string[] texts = new string[2];
+        texts[0] = "and you thought you were off the hook.";
+        texts[1] = "you had enough yet.";
+
+        StartCoroutine(endGameManager.TypeSentence("d"));
     }
 
     public static void AddScore()

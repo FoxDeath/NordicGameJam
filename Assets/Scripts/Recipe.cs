@@ -73,8 +73,13 @@ public class Recipe : MonoBehaviour
         appleNumberText.transform.parent.parent.gameObject.SetActive(false);
         winMenu.SetActive(true);
         MenuManager endGameManager = FindObjectOfType<MenuManager>();
-        endGameManager.text = "You managed to do it somehow this time.";
-        StartCoroutine(endGameManager.TypeSentence());
+
+        string[] texts = new string[2];
+        texts[0] = "so persistent, aren't we.";
+        texts[1] = "do you really think there is anything better to come.";
+
+        endGameManager.text = texts[Random.Range(0, texts.Length - 1)];
+        StartCoroutine(endGameManager.TypeSentence("d"));
     }
 
     public void EndGame()
@@ -88,8 +93,12 @@ public class Recipe : MonoBehaviour
         appleNumberText.transform.parent.parent.gameObject.SetActive(false);
         tryAgainMenu.SetActive(true);
         MenuManager endGameManager = FindObjectOfType<MenuManager>();
-        endGameManager.text = "Looks like you failed again you dimwit.";
-        StartCoroutine(endGameManager.TypeSentence());
+
+        string[] texts = new string[2];
+        texts[0] = "marvellous start for the day ain’t it? just go back to sleep already.";
+        texts[1] = "cheer up, you’ll get it tomorrow. or not.";
+
+        StartCoroutine(endGameManager.TypeSentence("d"));
     }
 
     public void Substract(GameObject fruit)

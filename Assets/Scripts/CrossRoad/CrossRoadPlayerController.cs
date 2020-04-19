@@ -198,8 +198,13 @@ public class CrossRoadPlayerController : MonoBehaviour
         winMenu.SetActive(true);
         MenuManager endGameManager = FindObjectOfType<MenuManager>();
         FindObjectOfType<CameraFreze>().freze = true;
-        endGameManager.text = "You managed to do it somehow this time.";
-        StartCoroutine(endGameManager.TypeSentence());
+
+        string[] texts = new string[2];
+        texts[0] = "so persistent, aren't we.";
+        texts[1] = "do you really think there is anything better to come.";
+
+        endGameManager.text = texts[Random.Range(0, texts.Length - 1)];
+        StartCoroutine(endGameManager.TypeSentence("d"));
     }
 
     public void EndGame()
@@ -213,7 +218,12 @@ public class CrossRoadPlayerController : MonoBehaviour
         tryAgainMenu.SetActive(true);
         MenuManager endGameManager = FindObjectOfType<MenuManager>();
         FindObjectOfType<CameraFreze>().freze = true;
-        endGameManager.text = "Looks like you failed again you dimwit.";
-        StartCoroutine(endGameManager.TypeSentence());
+
+        string[] texts = new string[2];
+        texts[0] = "you deserve it you know.";
+        texts[1] = "i sincerely hope you did that intentionally.";
+
+        endGameManager.text = texts[Random.Range(0, texts.Length - 1)];
+        StartCoroutine(endGameManager.TypeSentence("d"));
     }
 }
