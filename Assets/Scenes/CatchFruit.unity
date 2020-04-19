@@ -604,7 +604,7 @@ MonoBehaviour:
   fruit:
   - {fileID: 3993697939671301192, guid: 1fc9edda30843f143b7eea3dba015cad, type: 3}
   - {fileID: 3993697939671301192, guid: be0c4e5e2943eb74d849a49837c47dd2, type: 3}
-  - {fileID: 3993697939671301192, guid: b0075fbabb967da469176b0c5c63d1eb, type: 3}
+  - {fileID: 3993697939671301192, guid: 08612609572000000c81260957200000, type: 3}
   notFruit:
   - {fileID: 1215043567671790285, guid: c6cb4173fd66e5544ae87b21309ac510, type: 3}
   spawnRangeX: 19

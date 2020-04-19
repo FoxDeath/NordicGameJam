@@ -214,6 +214,27 @@ MonoBehaviour:
     loop: 1
     isPlaying: 0
     source: {fileID: 0}
+  - name: blender
+    clip: {fileID: 8300000, guid: 244ee8893668256419c156ecc3853523, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 1
+    isPlaying: 0
+    source: {fileID: 0}
+  - name: city
+    clip: {fileID: 8300000, guid: 6adebc13a75dc294197392bce2175360, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 1
+    isPlaying: 0
+    source: {fileID: 0}
+  - name: blop
+    clip: {fileID: 8300000, guid: daa5a61b7b22883499ee3b3ec1cf7a79, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    isPlaying: 0
+    source: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

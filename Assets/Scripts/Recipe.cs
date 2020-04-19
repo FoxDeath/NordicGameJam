@@ -69,6 +69,12 @@ public class Recipe : MonoBehaviour
 
     private void Victory()
     {
+        if(gameEnded)
+        {
+            return;
+        }
+
+        FindObjectOfType<AudioManager>().StopAll();
         gameEnded = true;
         appleNumberText.transform.parent.parent.gameObject.SetActive(false);
         winMenu.SetActive(true);
@@ -84,6 +90,7 @@ public class Recipe : MonoBehaviour
             return;
         }
 
+        FindObjectOfType<AudioManager>().StopAll();
         gameEnded = true;
         appleNumberText.transform.parent.parent.gameObject.SetActive(false);
         tryAgainMenu.SetActive(true);

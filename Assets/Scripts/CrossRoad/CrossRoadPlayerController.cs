@@ -44,6 +44,7 @@ public class CrossRoadPlayerController : MonoBehaviour
         {
             if (perc >= 1.5f)
             {
+                FindObjectOfType<AudioManager>().Play("blop");
                 anim.Play("Jump");
                 currentLerpTime = 0f;
                 currentScaleTime = 0f;
@@ -72,6 +73,7 @@ public class CrossRoadPlayerController : MonoBehaviour
         {
             if (perc >= 1.5f)
             {
+                FindObjectOfType<AudioManager>().Play("blop");
                 anim.Play("Jump");
                 currentLerpTime = 0f;
                 currentScaleTime = 0f;
@@ -100,6 +102,7 @@ public class CrossRoadPlayerController : MonoBehaviour
         {
             if (perc >= 1.5f)
             {
+                FindObjectOfType<AudioManager>().Play("blop");
                 anim.Play("Jump");
                 currentLerpTime = 0f;
                 currentScaleTime = 0f;
@@ -128,6 +131,7 @@ public class CrossRoadPlayerController : MonoBehaviour
         {
             if (perc >= 1.5f)
             {
+            FindObjectOfType<AudioManager>().Play("blop");        
                 anim.Play("Jump");
                 currentLerpTime = 0f;
                 currentScaleTime = 0f;
@@ -156,6 +160,12 @@ public class CrossRoadPlayerController : MonoBehaviour
         if(gameEnded || !gameStarted)
         {
             return;
+        }
+
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+        if(!audioManager.IsPlaying("city"))
+        {
+            audioManager.Play("city");
         }
 
          currentLerpTime += Time.deltaTime * lerpSpeed;
@@ -193,7 +203,8 @@ public class CrossRoadPlayerController : MonoBehaviour
         {
             return;
         }
-        
+
+        FindObjectOfType<AudioManager>().StopAll();        
         gameEnded = true;
         winMenu.SetActive(true);
         MenuManager endGameManager = FindObjectOfType<MenuManager>();
@@ -209,6 +220,7 @@ public class CrossRoadPlayerController : MonoBehaviour
             return;
         }
 
+        FindObjectOfType<AudioManager>().StopAll();        
         gameEnded = true;
         tryAgainMenu.SetActive(true);
         MenuManager endGameManager = FindObjectOfType<MenuManager>();

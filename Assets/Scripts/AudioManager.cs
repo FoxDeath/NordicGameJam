@@ -117,6 +117,18 @@ public class AudioManager : MonoBehaviour
         s.source.pitch = pitch; 
     }
 
+    public void SetVolume(string name, float volume)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        
+        if(s == null || volume < 0.1f || volume > 3f)
+        {
+            return;
+        }
+
+        s.source.volume = volume; 
+    }
+
     //Gets the pitch of the sound whose name is the string "name"
     public float GetPitch(string name)
     {
