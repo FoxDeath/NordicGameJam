@@ -12,7 +12,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.8245788, y: 10.35034, z: 2.5904381}
-  m_Center: {x: -0.36875245, y: -4.67517, z: 0.055865176}
+  m_Center: {x: 0, y: -4.6, z: 0}
 --- !u!1 &7993261941591265663
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282f3b35dcf397d41838eeaa66b9bc92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  child: {fileID: 0}
+  child: {fileID: 7820028450435607951}
   ac:
     serializedVersion: 2
     m_Curve:
@@ -115,8 +115,9 @@ MonoBehaviour:
   lerpSpeed: 8
   scaleSpeed: 4
   scaleChange: 0.1
-  tryAgainMenu: {fileID: 0}
-  winMenu: {fileID: 0}
+  tryAgainMenu: {fileID: 1606489989802165272, guid: 8a3c4cb78b7f00e408db7396333cf271,
+    type: 3}
+  winMenu: {fileID: 1606489989802165272, guid: d3a6a7b3e55028d408c72c0d581bd796, type: 3}
   gameStarted: 0
 --- !u!54 &-6504590251451865277
 Rigidbody:
@@ -154,7 +155,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: a8f73dd565ad9714aabbe69b999a1e68,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a8f73dd565ad9714aabbe69b999a1e68,
         type: 3}
@@ -224,7 +225,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: a8f73dd565ad9714aabbe69b999a1e68,
         type: 3}
       propertyPath: m_Name
-      value: Man 1
+      value: Mesh
       objectReference: {fileID: 0}
     - target: {fileID: 2345211957819186503, guid: a8f73dd565ad9714aabbe69b999a1e68,
         type: 3}
