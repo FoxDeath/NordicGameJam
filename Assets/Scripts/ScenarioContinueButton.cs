@@ -33,6 +33,18 @@ public class ScenarioContinueButton : MonoBehaviour
                 manager.text = text;
                 StartCoroutine(manager.TypeSentence("s"));
                 break;
+
+            case "MainMenu":
+                text = "You fall through your home entrance, exhausted. Have to wake up early tomorrow, but you feel you need something to take your mind off of today’s incidents. So you grab a beer and take your seat before your PC, looking forward to playing games and letting off some steam.";
+                manager.text = text;
+                StartCoroutine(manager.TypeSentence("s"));
+                break;
+
+            case "ScenarioPrint":
+                text = "Yet again, it’s the break of dawn. You spring out of bed, yearning to go to work. Well… spring out is a strong term, as is yearning. But hey… somebody’s gotta do it.";
+                manager.text = text;
+                StartCoroutine(manager.TypeSentence("s"));
+                break;
         }
     }
 
