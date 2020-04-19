@@ -19,7 +19,8 @@ public static class Loader
         CarLabytinth,
         EndGame,
         RestartScene,
-        Loading
+        Loading,
+        ScenarioPrint
     }
 
     private static Action onLoaderCallback;
