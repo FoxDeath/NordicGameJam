@@ -7,6 +7,7 @@ public class CrossRoadPlayerController : MonoBehaviour
     [SerializeField] Transform child;
     private Player input;
     private Animator anim;
+    private ParticleSystem particle;
     [SerializeField] AnimationCurve ac;
 
     private Vector3 startPos;
@@ -157,6 +158,7 @@ public class CrossRoadPlayerController : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        particle = GetComponentInChildren<ParticleSystem>();
     }
 
     void FixedUpdate()
@@ -186,6 +188,7 @@ public class CrossRoadPlayerController : MonoBehaviour
     {
         if (other.CompareTag("Obstacle"))
         {
+            particle.Play();
             EndGame();
             Destroy(transform.GetChild(0).gameObject);
         }
