@@ -7,18 +7,22 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    TextMeshProUGUI restartText;
-    public string text;
+    public static MenuManager instance;
 
-    
+    public Loader.Scene sceneToLoad;
+    TextMeshProUGUI restartText;
     Image brightness;
+
+    [SerializeField] TMP_FontAsset depressionFont;
+    [SerializeField] TMP_FontAsset scenarioFont;
+
     bool loading = false;
     bool starting = false;
     bool canClickButton = true;
     bool writingText = false;
-    public Loader.Scene sceneToLoad;
 
-    public static MenuManager instance;
+    public string text;
+
     private void Awake() 
     {
         if(instance == null)
@@ -94,7 +98,7 @@ public class MenuManager : MonoBehaviour
         loading = true;
     }
 
-    public IEnumerator TypeSentence()
+    public IEnumerator TypeSentence(string font)
     {
         TurnButtons(false);
 
@@ -103,6 +107,17 @@ public class MenuManager : MonoBehaviour
         restartText = GameObject.Find("Sentance").GetComponent<TextMeshProUGUI>();
 
         restartText.text = "";
+
+        if (font.Equals("d"))
+        {
+            restartText.font = depressionFont;
+            restartText.fontSize = 70;
+        }
+        else
+        {
+            restartText.font = scenarioFont;
+            restartText.fontSize = 38;
+        }
 
         AudioManager audioManager = FindObjectOfType<AudioManager>();
 
@@ -118,7 +133,7 @@ public class MenuManager : MonoBehaviour
 
             if(letter.Equals('.') || letter.Equals('?') || letter.Equals('!'))
             {
-                yield return new WaitForSeconds(0.4f);
+                yield return new WaitForSeconds(0.35f);
             }
             else
             {
@@ -153,12 +168,13 @@ public class MenuManager : MonoBehaviour
     {
         canClickButton = false;
 
-        text = "You probably won't make it this time again.";
-        yield return StartCoroutine(TypeSentence());
+        //text = "You probably won't make it this time again.";
+        //yield return StartCoroutine(TypeSentence());
 
-        TurnButtons(false);
+        //TurnButtons(false);
 
-        yield return new WaitForSeconds(2f);
+        //yield return new WaitForSeconds(2f);
+        yield return null;
 
         string sceneName = SceneManager.GetActiveScene().name;
         switch (sceneName)
@@ -203,12 +219,13 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator ContinueBehaviour()
     {
-        text = "Sure, go on. You will fail eventually.";
-        yield return StartCoroutine(TypeSentence());
+        //text = "Sure, go on. You will fail eventually.";
+        //yield return StartCoroutine(TypeSentence());
 
-        TurnButtons(false);
+        //TurnButtons(false);
 
-        yield return new WaitForSeconds(2f);
+        //yield return new WaitForSeconds(2f);
+        yield return null;
 
         string sceneName = SceneManager.GetActiveScene().name;
         switch (sceneName)
@@ -258,12 +275,13 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator GiveUpBehaviour()
     {
-        text = "That's right, give up.";
-        yield return StartCoroutine(TypeSentence());
+        //text = "That's right, give up.";
+        //yield return StartCoroutine(TypeSentence());
 
-        TurnButtons(false);
+        //TurnButtons(false);
 
-        yield return new WaitForSeconds(2f);
+        //yield return new WaitForSeconds(2f);
+        yield return null;
 
         sceneToLoad = Loader.Scene.MainMenu;
         Clock.GoingForward = false;
@@ -278,23 +296,23 @@ public class MenuManager : MonoBehaviour
         switch (sceneName)
         {
             case "CatchFruit":
-                text = "Are you ready for breakfast!";
+                string[] texts = new string[2];
+                texts[0] = "so thoughtful, aren’t we." + System.Environment.NewLine + "did you start a fruit flight academy or are you just a moron? either way, you succeeded.";
+                texts[1] = "try to save what you can. or not, what does it matter anyway";
+
+                text = texts[Random.Range(0, texts.Length - 1)];
                 break;
 
             case "CrossRoad":
-                text = "Cross the road you bastard!";
+                text = "you know you could just willingly jump in front of one." + System.Environment.NewLine + "you might not have to see what else this crappy day has in store for you.";
                 break;
 
             case "OfficePacman":
-                text = "Work! Work! Work!";
-                break;
-
-            case "CarLabyrinth":
-                
+                text = "you’ve done it now you worthless slacker." + System.Environment.NewLine + "you could run, but is it worth it." + System.Environment.NewLine + "he is going to get you one day, might as well let go.";
                 break;
         }
 
-        StartCoroutine(TypeSentence());
+        StartCoroutine(TypeSentence("d"));
     }
 
     public void Ready()
