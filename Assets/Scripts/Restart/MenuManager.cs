@@ -150,7 +150,14 @@ public class MenuManager : MonoBehaviour
             }
             else
             {
-                yield return new WaitForSeconds(0.05f);
+                if (font.Equals("d"))
+                {
+                    yield return new WaitForSeconds(0.05f);
+                }
+                else
+                {
+                    yield return new WaitForSeconds(0.02f);
+                }
             }
         }
 
@@ -252,7 +259,7 @@ public class MenuManager : MonoBehaviour
                 break;
 
             case "OfficePacMan":
-                sceneAfterScenario = Loader.Scene.CarLabytinth;
+                sceneAfterScenario = Loader.Scene.MainMenu;
                 sceneToLoad = Loader.Scene.ScenarioPrint;
                 Clock.GoingForward = true;
                 loading = true;
@@ -266,6 +273,12 @@ public class MenuManager : MonoBehaviour
     {
         sceneToLoad = sceneAfterScenario;
         Loader.ClockSkip = true;
+
+        if (text.ToCharArray()[1] == "e".ToCharArray()[0])
+        {
+            sceneAfterScenario = Loader.Scene.CatchFruit;
+        }
+
         Clock.GoingForward = true;
         loading = true;
     }
