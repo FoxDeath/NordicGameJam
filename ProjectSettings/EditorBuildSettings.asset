@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OfficePacman.unity
     guid: 59f94b49562e6b14c950ffe34a384d91
+  - enabled: 1
+    path: Assets/Scenes/ScenarioPrint.unity
+    guid: 89876d67de51ead4c8bfe29c6ea2bc7e
   m_configObjects: {}

@@ -10,13 +10,14 @@ public class MenuManager : MonoBehaviour
     public static MenuManager instance;
 
     public Loader.Scene sceneToLoad;
+    public Loader.Scene sceneAfterScenario;
     TextMeshProUGUI restartText;
     Image brightness;
 
     [SerializeField] TMP_FontAsset depressionFont;
     [SerializeField] TMP_FontAsset scenarioFont;
 
-    bool loading = false;
+    public bool loading = false;
     bool starting = false;
     bool canClickButton = true;
     bool writingText = false;
@@ -70,8 +71,10 @@ public class MenuManager : MonoBehaviour
                 newColor = Color.white;
                 newColor.a = 0;
             }
+
             newColor.a += 1 * Time.deltaTime;
             brightness.color = newColor;
+
             if (newColor.a >= 2)
             {
                 Loader.Load(sceneToLoad);
@@ -125,7 +128,7 @@ public class MenuManager : MonoBehaviour
         {
             restartText.text += letter;
 
-            if(!letter.Equals(' '))
+            if(!letter.Equals(' ') && font.Equals("d"))
             {
                 audioManager.SetPitch("voice", Random.Range(0.8f, 1.2f));
                 audioManager.Play("voice");
@@ -196,12 +199,6 @@ public class MenuManager : MonoBehaviour
                 Clock.GoingForward = false;
                 loading = true;
                 break;
-
-            case "CarLabyrinth":
-                sceneToLoad = Loader.Scene.CarLabytinth;
-                Clock.GoingForward = false;
-                loading = true;
-                break;
         }
 
         canClickButton = true;
@@ -231,31 +228,35 @@ public class MenuManager : MonoBehaviour
         switch (sceneName)
         {
             case "CatchFruit":
-                sceneToLoad = Loader.Scene.CrossRoad;
+                sceneAfterScenario = Loader.Scene.CrossRoad;
+                sceneToLoad = Loader.Scene.ScenarioPrint;
                 Clock.GoingForward = true;
                 loading = true;
                 break;
 
             case "CrossRoad":
-                sceneToLoad = Loader.Scene.OfficePacMan;
+                sceneAfterScenario = Loader.Scene.OfficePacMan;
+                sceneToLoad = Loader.Scene.ScenarioPrint;
                 Clock.GoingForward = true;
                 loading = true;
                 break;
 
-            case "OfficePacman":
-                sceneToLoad = Loader.Scene.CarLabytinth;
-                Clock.GoingForward = true;
-                loading = true;
-                break;
-
-            case "CarLabyrinth":
-                sceneToLoad = Loader.Scene.EndGame;
+            case "OfficePacMan":
+                sceneAfterScenario = Loader.Scene.CarLabytinth;
+                sceneToLoad = Loader.Scene.ScenarioPrint;
                 Clock.GoingForward = true;
                 loading = true;
                 break;
         }
 
         canClickButton = true;
+    }
+
+    public void AfterScenario()
+    {
+        sceneToLoad = sceneAfterScenario;
+        Clock.GoingForward = true;
+        loading = true;
     }
 
     public void GiveUp()
@@ -293,6 +294,8 @@ public class MenuManager : MonoBehaviour
     public void StartMiniGame()
     {
         string sceneName = SceneManager.GetActiveScene().name;
+        bool notScenario = false;
+
         switch (sceneName)
         {
             case "CatchFruit":
@@ -301,18 +304,24 @@ public class MenuManager : MonoBehaviour
                 texts[1] = "try to save what you can. or not, what does it matter anyway";
 
                 text = texts[Random.Range(0, texts.Length - 1)];
+                notScenario = true;
                 break;
 
             case "CrossRoad":
                 text = "you know you could just willingly jump in front of one." + System.Environment.NewLine + "you might not have to see what else this crappy day has in store for you.";
+                notScenario = true;
                 break;
 
             case "OfficePacman":
                 text = "you’ve done it now you worthless slacker." + System.Environment.NewLine + "you could run, but is it worth it." + System.Environment.NewLine + "he is going to get you one day, might as well let go.";
+                notScenario = true;
                 break;
         }
 
-        StartCoroutine(TypeSentence("d"));
+        if (notScenario)
+        {
+            StartCoroutine(TypeSentence("d"));
+        }
     }
 
     public void Ready()
