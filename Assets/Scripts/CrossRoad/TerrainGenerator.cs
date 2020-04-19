@@ -16,9 +16,8 @@ public class TerrainGenerator : MonoBehaviour
 
     [SerializeField] int levelLength;
     [SerializeField] int maxRoadsAfterAnother = 2;
-    [SerializeField] int maxPavementsAfterAnother = 2;
+    [SerializeField] int maxPavementsAfterAnother = 1;
     [SerializeField] int maxTracksAfterAnother = 3;
-
 
     private List<string> terrainArray = new List<string>();
 

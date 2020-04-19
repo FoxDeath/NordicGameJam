@@ -11,8 +11,8 @@ public class CrossRoadPlayerController : MonoBehaviour
 
     private Vector3 startPos;
     private Vector3 endPos;
-    private Vector3 startScale = new Vector3(1f, 1f, 1f);
-    private Vector3 endScale = new Vector3(1f, 1f, 1f);
+    private Vector3 startScale = new Vector3(0.15f, 0.15f, 0.15f);
+    private Vector3 endScale = new Vector3(0.15f, 0.15f, 0.15f);
 
     [SerializeField] float lerpSpeed = 8;
     [SerializeField] float scaleSpeed = 4;
@@ -36,23 +36,24 @@ public class CrossRoadPlayerController : MonoBehaviour
         input.CrossRoad.Left.started += ctx =>
         {
             currentScaleTime = 0f;
-            startScale = transform.localScale;
-            endScale = new Vector3(transform.localScale.x + scaleChange, transform.localScale.y - scaleChange, transform.localScale.z);
+            startScale = child.localScale;
+            endScale = new Vector3(child.localScale.x + scaleChange, child.localScale.y - scaleChange, child.localScale.z);
         };
 
         input.CrossRoad.Left.canceled += ctx =>
         {
             if (perc >= 1.5f)
             {
+                FindObjectOfType<AudioManager>().Play("blop");
                 anim.Play("Jump");
                 currentLerpTime = 0f;
                 currentScaleTime = 0f;
                 perc = 0f;
                 startPos = transform.position;
-                startScale = transform.localScale;
+                startScale = child.localScale;
             }
 
-            endScale = new Vector3(1f, 1f, 1f);
+            endScale = new Vector3(0.15f, 0.15f, 0.15f);
 
             if (transform.position == endPos)
             {
@@ -64,23 +65,24 @@ public class CrossRoadPlayerController : MonoBehaviour
         input.CrossRoad.Right.started += ctx =>
         {
             currentScaleTime = 0f;
-            startScale = transform.localScale;
-            endScale = new Vector3(transform.localScale.x + scaleChange, transform.localScale.y - scaleChange, transform.localScale.z);
+            startScale = child.localScale;
+            endScale = new Vector3(child.localScale.x + scaleChange, child.localScale.y - scaleChange, child.localScale.z);
         };
 
         input.CrossRoad.Right.canceled += ctx =>
         {
             if (perc >= 1.5f)
             {
+                FindObjectOfType<AudioManager>().Play("blop");
                 anim.Play("Jump");
                 currentLerpTime = 0f;
                 currentScaleTime = 0f;
                 perc = 0f;
                 startPos = transform.position;
-                startScale = transform.localScale;
+                startScale = child.localScale;
             }
 
-            endScale = new Vector3(1f, 1f, 1f);
+            endScale = new Vector3(0.15f, 0.15f, 0.15f);
 
             if (transform.position == endPos)
             {
@@ -92,23 +94,24 @@ public class CrossRoadPlayerController : MonoBehaviour
         input.CrossRoad.Up.started += ctx =>
         {
             currentScaleTime = 0f;
-            startScale = transform.localScale;
-            endScale = new Vector3(transform.localScale.x + scaleChange, transform.localScale.y - scaleChange, transform.localScale.z);
+            startScale = child.localScale;
+            endScale = new Vector3(child.localScale.x + scaleChange, child.localScale.y - scaleChange, child.localScale.z);
         };
 
         input.CrossRoad.Up.canceled += ctx =>
         {
             if (perc >= 1.5f)
             {
+                FindObjectOfType<AudioManager>().Play("blop");
                 anim.Play("Jump");
                 currentLerpTime = 0f;
                 currentScaleTime = 0f;
                 perc = 0f;
                 startPos = transform.position;
-                startScale = transform.localScale;
+                startScale = child.localScale;
             }
 
-            endScale = new Vector3(1f, 1f, 1f);
+            endScale = new Vector3(0.15f, 0.15f, 0.15f);
 
             if (transform.position == endPos)
             {
@@ -120,23 +123,24 @@ public class CrossRoadPlayerController : MonoBehaviour
         input.CrossRoad.Down.started += ctx =>
         {
             currentScaleTime = 0f;
-            startScale = transform.localScale;
-            endScale = new Vector3(transform.localScale.x + scaleChange, transform.localScale.y - scaleChange, transform.localScale.z);
+            startScale = child.localScale;
+            endScale = new Vector3(child.localScale.x + scaleChange, child.localScale.y - scaleChange, child.localScale.z);
         };
 
         input.CrossRoad.Down.canceled += ctx =>
         {
             if (perc >= 1.5f)
             {
+                FindObjectOfType<AudioManager>().Play("blop");        
                 anim.Play("Jump");
                 currentLerpTime = 0f;
                 currentScaleTime = 0f;
                 perc = 0f;
                 startPos = transform.position;
-                startScale = transform.localScale;
+                startScale = child.localScale;
             }
 
-            endScale = new Vector3(1f, 1f, 1f);
+            endScale = new Vector3(0.15f, 0.15f, 0.15f);
 
             if (transform.position == endPos)
             {
@@ -156,6 +160,13 @@ public class CrossRoadPlayerController : MonoBehaviour
         if(gameEnded || !gameStarted)
         {
             return;
+        }
+
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+
+        if(!audioManager.IsPlaying("city"))
+        {
+            audioManager.Play("city");
         }
 
          currentLerpTime += Time.deltaTime * lerpSpeed;
@@ -193,7 +204,8 @@ public class CrossRoadPlayerController : MonoBehaviour
         {
             return;
         }
-        
+
+        FindObjectOfType<AudioManager>().StopAll();        
         gameEnded = true;
         winMenu.SetActive(true);
         MenuManager endGameManager = FindObjectOfType<MenuManager>();
@@ -209,6 +221,7 @@ public class CrossRoadPlayerController : MonoBehaviour
             return;
         }
 
+        FindObjectOfType<AudioManager>().StopAll();        
         gameEnded = true;
         tryAgainMenu.SetActive(true);
         MenuManager endGameManager = FindObjectOfType<MenuManager>();

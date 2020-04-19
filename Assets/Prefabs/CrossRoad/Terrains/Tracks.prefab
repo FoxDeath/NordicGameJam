@@ -110,8 +110,8 @@ MonoBehaviour:
     type: 3}
   spawnOffset: 15
   speed: 18
-  minDist: 2
-  maxDist: 13
+  minDist: 5
+  maxDist: 15
 --- !u!1 &3194049191768553418
 GameObject:
   m_ObjectHideFlags: 0

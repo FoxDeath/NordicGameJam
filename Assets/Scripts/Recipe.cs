@@ -5,9 +5,9 @@ using TMPro;
 
 public class Recipe : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI bananaNumberText;
-    [SerializeField] TextMeshProUGUI pearNumberText;
-    [SerializeField] TextMeshProUGUI appleNumberText;
+    [SerializeField] TextMesh bananaNumberText;
+    [SerializeField] TextMesh pearNumberText;
+    [SerializeField] TextMesh appleNumberText;
 
     [SerializeField] GameObject tryAgainMenu;
     [SerializeField] GameObject winMenu;
@@ -69,8 +69,13 @@ public class Recipe : MonoBehaviour
 
     private void Victory()
     {
+        if(gameEnded)
+        {
+            return;
+        }
+
+        FindObjectOfType<AudioManager>().StopAll();
         gameEnded = true;
-        appleNumberText.transform.parent.parent.gameObject.SetActive(false);
         winMenu.SetActive(true);
         MenuManager endGameManager = FindObjectOfType<MenuManager>();
         endGameManager.text = "You managed to do it somehow this time.";
@@ -84,8 +89,8 @@ public class Recipe : MonoBehaviour
             return;
         }
 
+        FindObjectOfType<AudioManager>().StopAll();
         gameEnded = true;
-        appleNumberText.transform.parent.parent.gameObject.SetActive(false);
         tryAgainMenu.SetActive(true);
         MenuManager endGameManager = FindObjectOfType<MenuManager>();
         endGameManager.text = "Looks like you failed again you dimwit.";
